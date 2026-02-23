@@ -112,6 +112,7 @@ export async function getLinks(
       expiredAt: link.expired_at || undefined,
       status: link.is_banned ? "disabled" : "active",
       adsLevel: link.ad_level ? `level${link.ad_level}` : "level1",
+      password: link.password || undefined,
     };
   });
 

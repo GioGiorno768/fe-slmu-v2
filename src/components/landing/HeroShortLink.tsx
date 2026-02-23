@@ -343,15 +343,15 @@ export default function HeroShortLink() {
                   {t("yourShortLink")}
                 </p>
                 <div className="flex items-center justify-center gap-2">
-                  <a
-                    href={`https://${currentLink}`}
+                  <Link
+                    href={`${currentLink}`}
                     target="_blank"
                     rel="noopener"
                     className="text-sm sm:text-lg font-semibold text-white hover:text-white/90 truncate flex items-center gap-2 group min-w-0"
                   >
                     <span className="truncate text-center">{currentLink}</span>
                     <ExternalLink className="w-4 h-4 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </a>
+                  </Link>
                 </div>
               </div>
 

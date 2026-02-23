@@ -11,6 +11,9 @@ import {
   BarChart3,
   Clock,
   Ban,
+  Lock,
+  Eye,
+  EyeOff,
 } from "lucide-react";
 import clsx from "clsx";
 import type { AdminLink } from "@/types/type";
@@ -33,6 +36,7 @@ export default function LinkItem({
 LinkItemProps) {
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -189,6 +193,43 @@ LinkItemProps) {
               <ExternalLink className="w-3 h-3" />
             </a>
           </div>
+
+          {/* Password Indicator */}
+          {link.password && (
+            <div className="flex items-center gap-2 text-[1.2em] text-grays mb-4 group/pw">
+              <Lock className="w-3.5 h-3.5 shrink-0 text-amber-500" />
+              <span className="text-amber-600 dark:text-amber-400 font-medium text-[0.9em]">
+                Password:
+              </span>
+              <code
+                className={clsx(
+                  "px-2 py-0.5 rounded text-[0.9em] font-mono",
+                  isDark
+                    ? "bg-gray-800 text-gray-300"
+                    : "bg-gray-100 text-gray-700",
+                )}
+              >
+                {showPassword ? link.password : "••••••••"}
+              </code>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setShowPassword(!showPassword);
+                }}
+                className={clsx(
+                  "p-1 rounded transition-colors",
+                  isDark ? "hover:bg-gray-700" : "hover:bg-gray-200",
+                )}
+                title={showPassword ? "Hide password" : "Show password"}
+              >
+                {showPassword ? (
+                  <EyeOff className="w-3.5 h-3.5" />
+                ) : (
+                  <Eye className="w-3.5 h-3.5" />
+                )}
+              </button>
+            </div>
+          )}
 
           <div
             className={clsx(

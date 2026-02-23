@@ -642,6 +642,7 @@ export interface AdminLink {
   expiredAt?: string;
   status: LinkStatus;
   adsLevel: string; // "level1", "noAds", dll
+  password?: string; // Link password (if set)
 }
 
 export interface MemberLinkFilters {

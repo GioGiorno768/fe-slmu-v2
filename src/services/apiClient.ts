@@ -32,6 +32,12 @@ apiClient.interceptors.response.use(
 
       // 401: Token expired, deleted account, or unauthenticated
       if (status === 401) {
+        // Skip auto-redirect for /continue endpoint (401 = password required)
+        const requestUrl = error.config?.url || "";
+        if (requestUrl.includes("/continue")) {
+          return Promise.reject(error);
+        }
+
         removeToken();
         if (typeof window !== "undefined") {
           // Redirect to login with message
