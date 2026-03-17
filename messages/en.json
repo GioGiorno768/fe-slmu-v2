@@ -41,7 +41,7 @@
       },
       "slide2": {
         "badge": "High",
-        "title": "CPM Rate up to $15",
+        "title": "CPM Rate up to $8",
         "desc": "Enjoy the highest rates in the industry with competitive pay per 1,000 views."
       },
       "slide3": {
@@ -109,8 +109,8 @@
       "titleLine1": "Turn Every Click",
       "titleLine2": "into Cash",
       "subtitle": "The best link shortener to earn money. Highest paying URL shortener with secure links, detailed analytics, and daily payouts.",
-      "rating": "4.9",
-      "trust": "Trusted by 10K+ publishers worldwide"
+      "rating": "5.0",
+      "trust": "Maximize your earnings with real-time analytics & responsive support."
     },
     "HeroShortLink": {
       "inputPlaceholder": "Paste your long URL here...",
@@ -136,9 +136,9 @@
       "aliasMaxLength": "Max 20 characters"
     },
     "Tagline": {
-      "part1": "Simplicity, performance, and security,",
-      "highlight": "empowering you to monetize every click",
-      "part2": "with confidence and ease."
+      "part1": "Turn every click into profit ",
+      "highlight": "with our secure and transparent platform. ",
+      "part2": "Start maximizing your revenue today without the hassle."
     },
     "Features": {
       "title": "Why Choose",
@@ -170,7 +170,7 @@
       },
       "payouts": {
         "title": "Fast Payouts",
-        "desc": "1-7 day processing via PayPal, Bank Transfer, or Crypto."
+        "desc": "1-3 days processing via Digital Wallets and Bank Transfer (Indonesia)."
       },
       "referral": {
         "title": "Referral Program",
@@ -234,23 +234,23 @@
       },
       "q2": {
         "question": "What is CPM and how does it work?",
-        "answer": "CPM (Cost Per Mille) is the amount you earn per 1,000 views. Our rates range from $1-$12 depending on traffic quality and visitor location. Tier 1 countries like US, UK, and Canada earn the highest rates."
+        "answer": "CPM (Cost Per Mille) is the amount you earn per 1,000 views. Our rates range from $1-$8 depending on traffic quality and visitor location. Tier 1 countries like US, UK, and Canada earn the highest rates."
       },
       "q3": {
         "question": "What is the minimum payout amount?",
-        "answer": "Our minimum payout is just $2, making it easy to withdraw your earnings quickly. We support PayPal, Bank Transfer, Dana, OVO, and cryptocurrency withdrawals."
+        "answer": "Our minimum payout is just $6, making it easy to withdraw your earnings quickly. We support PayPal, Bank Transfer, Dana, OVO, Gopay, ShopeePay, and Linkaja"
       },
       "q4": {
         "question": "Can I customize my short links?",
-        "answer": "Yes! You can create custom aliases, add password protection, set expiry dates, and choose ad levels. Premium members get access to even more customization options."
+        "answer": "Yes! You can create custom aliases, add password protection, and set expiry dates. Premium members get access to even more customization options."
       },
       "q5": {
         "question": "How does the referral program work?",
-        "answer": "Share your unique referral link and earn 10-25% lifetime commission from your referrals' earnings. The more active referrals you have, the higher your commission rate."
+        "answer": "Share your unique referral link and earn 10-25% lifetime commission from your referrals' earnings. Plus, users who sign up through your link get a $1.20 starting bonus. The more active referrals you have, the higher your commission rate!"
       },
       "q6": {
         "question": "How fast are payouts processed?",
-        "answer": "Payouts are typically processed within 1-7 business days. We support multiple payment methods including PayPal, bank transfers, e-wallets, and cryptocurrency."
+        "answer": "Payouts are typically processed within 1-3 business days. We support multiple payment methods including PayPal, bank transfers, Dana, OVO, Gopay, ShopeePay, and Linkaja"
       }
     },
     "CTA": {
@@ -994,13 +994,13 @@
         "cta": "Create New Link"
       },
       "event": {
-        "title": "Weekend CPM Bonus! 🚀",
-        "desc": "Get +15% CPM boost for all traffic from Indonesia this Saturday & Sunday.",
+        "title": "Rank Up, Earn More! 🚀",
+        "desc": "Unlock up to +50% permanent CPM bonus. Push your traffic to reach the next rank and maximize your earnings!",
         "cta": "View Info"
       },
       "feature": {
-        "title": "Withdraw via Crypto 💎",
-        "desc": "Great news! You can now withdraw to USDT (TRC20) wallet with low fees.",
+        "title": "Invite & Earn Passive Income! 💸",
+        "desc": "Get 25% lifetime commission & your friends get a $1.20 signup bonus. Share your link and start earning!",
         "cta": "Setup Payment"
       }
     },

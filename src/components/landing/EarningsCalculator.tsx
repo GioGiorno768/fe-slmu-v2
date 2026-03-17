@@ -52,7 +52,7 @@ export default function EarningsCalculator() {
 
   // Calculate slider percentage for gradient fill
   const viewsPercent = ((views - 1000) / (100000 - 1000)) * 100;
-  const cpmPercent = ((cpm - 1) / (12 - 1)) * 100;
+  const cpmPercent = ((cpm - 1) / (8 - 1)) * 100;
 
   if (!mounted) {
     // SSR placeholder: render the heading so crawlers can see it
@@ -153,7 +153,7 @@ export default function EarningsCalculator() {
                   <input
                     type="range"
                     min="1"
-                    max="12"
+                    max="8"
                     step="0.5"
                     value={cpm}
                     onChange={(e) => setCpm(parseFloat(e.target.value))}
@@ -165,7 +165,7 @@ export default function EarningsCalculator() {
                 </div>
                 <div className="flex justify-between mt-2 text-xs text-slate-400">
                   <span>$1</span>
-                  <span>$12</span>
+                  <span>$8</span>
                 </div>
               </div>
 

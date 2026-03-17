@@ -39,12 +39,12 @@ export default function AuthBranding({
       title: t("branding.slide3.title"),
       description: t("branding.slide3.desc"),
     },
-    {
-      icon: Globe,
-      badge: t("branding.slide4.badge"),
-      title: t("branding.slide4.title"),
-      description: t("branding.slide4.desc"),
-    },
+    // {
+    //   icon: Globe,
+    //   badge: t("branding.slide4.badge"),
+    //   title: t("branding.slide4.title"),
+    //   description: t("branding.slide4.desc"),
+    // },
   ];
 
   const colorConfig = {

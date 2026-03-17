@@ -11,8 +11,9 @@ const paymentMethods = [
   { name: "Dana", icon: "/payment-icons/dana.png" },
   { name: "OVO", icon: "/payment-icons/ovo.png" },
   { name: "ShopeePay", icon: "/payment-icons/shopeepay.png" },
-  { name: "BCA", icon: "/payment-icons/bca.png" },
-  { name: "Mandiri", icon: "/payment-icons/mandiri.png" },
+  { name: "Gopay", icon: "/payment-icons/gopay.png" },
+  { name: "Link Aja!", icon: "/payment-icons/linkaja.png" },
+  { name: "Bank Transfer", icon: "/payment-icons/bank-transfer.png" },
 ];
 
 // Duplicate for seamless loop

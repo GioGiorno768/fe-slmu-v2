@@ -25,8 +25,8 @@ export default function PayoutRatesTable({ rates }: PayoutRatesTableProps) {
 
   // Tier classification
   const getTier = (cpm: number) => {
-    if (cpm >= 15) return "tier1";
-    if (cpm >= 7) return "tier2";
+    if (cpm >= 7) return "tier1";
+    if (cpm >= 4) return "tier2";
     return "tier3";
   };
 
@@ -57,7 +57,7 @@ export default function PayoutRatesTable({ rates }: PayoutRatesTableProps) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8"
+        className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8"
       >
         <div className="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
           <div className="flex items-center gap-2 text-green-600 text-sm font-medium mb-2">
@@ -77,7 +77,7 @@ export default function PayoutRatesTable({ rates }: PayoutRatesTableProps) {
             ${avgRate.toFixed(2)}
           </p>
         </div>
-        <div className="hidden md:block bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+        <div className="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
           <div className="flex items-center gap-2 text-purple-600 text-sm font-medium mb-2">
             <Globe className="w-4 h-4" />
             {t("countries")}
