@@ -22,7 +22,8 @@ export default function ReferralStatsGrid({ stats }: ReferralStatsGridProps) {
   const t = useTranslations("Dashboard");
 
   const maxReferrals = stats?.maxReferrals ?? 10;
-  const isLimitReached = stats?.isLimitReached ?? false;
+  const isUnlimited = maxReferrals === -1;
+  const isLimitReached = isUnlimited ? false : (stats?.isLimitReached ?? false);
 
   const statsData = [
     {
@@ -39,7 +40,7 @@ export default function ReferralStatsGrid({ stats }: ReferralStatsGridProps) {
     {
       icon: Users,
       label: t("referralPage.totalInvited"),
-      value: `${stats?.totalReferred || 0} / ${maxReferrals}`,
+      value: `${stats?.totalReferred || 0} / ${isUnlimited ? '∞' : maxReferrals}`,
       subLabel: isLimitReached
         ? t("referralPage.limitReached")
         : t("referralPage.registeredUsers"),
