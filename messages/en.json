@@ -1104,6 +1104,7 @@
     "topReferrers": "Top Referrers",
     "direct": "Direct",
     "createShortlink": "Create Shortlink",
+    "descCreateShortlink": "Customize your shortlink",
     "pasteUrl": "Paste your url here...",
     "aliasLabel": "Alias (Custom URL)",
     "setAlias": "Set alias url here (optional)...",

@@ -1104,6 +1104,7 @@
     "topReferrers": "Referrer Teratas",
     "direct": "Langsung",
     "createShortlink": "Buat Shortlink",
+    "descCreateShortlink": "Kustomisasi shortlink Anda",
     "pasteUrl": "Tempel url Anda di sini...",
     "aliasLabel": "Alias (URL Kustom)",
     "setAlias": "Atur alias di sini (opsional)...",

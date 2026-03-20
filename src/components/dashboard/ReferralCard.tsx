@@ -114,7 +114,7 @@ export default function ReferralCard({ data }: ReferralCardProps) {
                       type="text"
                       readOnly
                       value={data?.referralLink || ""}
-                      className="flex-1 text-[1.4em] font-medium text-shortblack bg-transparent border-none outline-none truncate"
+                      className="flex-1 text-[1.4em] font-medium text-shortblack bg-transparent border-none outline-none"
                       onFocus={(e) => e.target.select()}
                     />
                     <button

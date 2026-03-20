@@ -235,9 +235,12 @@ export default function CreateShortlink({
             >
               <LinkIcon className="w-5 h-5 text-white" />
             </div>
-            <h3 className="text-[1.8em] font-bold text-shortblack tracking-tight">
-              {t("createShortlink")}
-            </h3>
+            <div className="flex flex-col">
+              <h3 className="text-[1.8em] font-bold text-shortblack tracking-tight">
+                {t("createShortlink")}
+              </h3>
+              <p className="text-[1.2em] text-grays mt-0.5">{t("descCreateShortlink")}</p>
+            </div>
           </div>
           <button
             onClick={() => setIsAdvancedOpen(!isAdvancedOpen)}
