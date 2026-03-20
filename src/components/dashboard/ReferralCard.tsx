@@ -72,10 +72,10 @@ export default function ReferralCard({ data }: ReferralCardProps) {
             <Gift className="w-5 h-5 text-white" />
           </div>
           <div>
-            <h3 className="text-[1.6em] font-bold text-shortblack">
+            <h3 className="text-[1.8em] sm:text-[1.6em] font-bold text-shortblack">
               {t("referralTitle")}
             </h3>
-            <p className="text-[1.1em] text-bluelight">
+            <p className="text-[1.4em] sm:text-[1.2em] text-bluelight">
               {t("referralCard.subtitle")}
             </p>
           </div>
@@ -87,7 +87,7 @@ export default function ReferralCard({ data }: ReferralCardProps) {
           {isLoading ? (
             <Loader2 className="w-4 h-4 animate-spin text-bluelight" />
           ) : (
-            <span className="text-[1.3em] font-bold text-bluelight">
+            <span className="text-[1.4em] font-bold text-bluelight">
               {data?.totalUsers || 0}
             </span>
           )}
@@ -106,15 +106,15 @@ export default function ReferralCard({ data }: ReferralCardProps) {
               {/* Link Display */}
               <div className="flex items-center gap-3 mb-4">
                 <div className="flex-1 min-w-0">
-                  <p className="text-[1em] text-grays mb-1">
+                  {/* <p className="text-[1em] text-grays mb-1">
                     {t("referralCard.referralLink")}
-                  </p>
+                  </p> */}
                   <div className="flex items-center gap-2 bg-card rounded-xl px-4 py-3 border border-gray-dashboard/30">
                     <input
                       type="text"
                       readOnly
                       value={data?.referralLink || ""}
-                      className="flex-1 text-[1.25em] font-medium text-shortblack bg-transparent border-none outline-none truncate"
+                      className="flex-1 text-[1.4em] font-medium text-shortblack bg-transparent border-none outline-none truncate"
                       onFocus={(e) => e.target.select()}
                     />
                     <button
@@ -142,7 +142,7 @@ export default function ReferralCard({ data }: ReferralCardProps) {
                   onClick={handleCopy}
                   disabled={isCopied}
                   className={clsx(
-                    "flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-[1.2em] font-semibold transition-all duration-200",
+                    "flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-[1.4em] font-semibold transition-all duration-200",
                     isCopied
                       ? "bg-green-500 text-white"
                       : isDark
@@ -190,7 +190,7 @@ export default function ReferralCard({ data }: ReferralCardProps) {
           href="/referral"
           className="flex items-center justify-center gap-2 group"
         >
-          <span className="text-[1.2em] text-grays group-hover:text-bluelight transition-colors">
+          <span className="text-[1.4em] text-grays group-hover:text-bluelight transition-colors">
             {t("referralCard.viewAllReferrals")}
           </span>
           <ArrowRight className="w-4 h-4 text-grays group-hover:text-bluelight group-hover:translate-x-1 transition-all" />

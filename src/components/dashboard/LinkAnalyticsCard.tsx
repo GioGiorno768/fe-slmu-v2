@@ -302,7 +302,7 @@ export default function LinkAnalyticsCard({
   return (
     <div className="bg-card p-6 rounded-3xl shadow-sm shadow-slate-500/50 hover:shadow-lg transition-shadow duration-200 h-full flex flex-col">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 gap-4">
+      <div className={path.includes("/dashboard") ? "flex flex-row items-start sm:items-center justify-between mb-4 gap-4" : "flex sm:flex-row flex-col items-start sm:items-center justify-between mb-4 gap-4"}>
         <div className="flex items-center gap-3">
           <div
             className={clsx(
@@ -315,10 +315,10 @@ export default function LinkAnalyticsCard({
             <StatIcon className="w-5 h-5 text-white" />
           </div>
           <div>
-            <h3 className="text-[1.6em] font-bold text-shortblack">
+            <h3 className="text-[1.8em] sm:text-[1.6em] font-bold text-shortblack">
               {t("clickAnalytics")}
             </h3>
-            <p className="text-[1.1em] text-bluelight">
+            <p className="text-[1.4em] sm:text-[1.2em] text-bluelight">
               {stat === "totalEarnings" ? "Revenue trend" : "Traffic overview"}
             </p>
           </div>
@@ -329,7 +329,7 @@ export default function LinkAnalyticsCard({
           {path.includes("/dashboard") ? (
             <Link
               href="/analytics"
-              className="text-[1.3em] bg-blues font-medium text-bluelight px-3 py-1.5 rounded-lg hover:bg-blue-dashboard transition-all duration-300 flex items-center gap-1 group"
+              className="text-[1.4em] bg-blues font-medium text-bluelight px-3 py-1.5 rounded-lg hover:bg-blue-dashboard transition-all duration-300 flex items-center gap-1 group"
             >
               <span>Detail</span>
               <ArrowRightIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />

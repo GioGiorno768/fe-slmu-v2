@@ -95,7 +95,7 @@ export default function MilestoneCard({ data }: MilestoneCardProps) {
         <div className="flex items-center gap-4">
           {/* Icon Container - Dynamic from DB */}
           <div
-            className={`w-14 h-14 ${
+            className={`w-12 h-12 ${
               bgColor || "bg-yellow-500/10"
             } backdrop-blur-md rounded-2xl flex items-center justify-center border border-white/5`}
           >
@@ -104,7 +104,7 @@ export default function MilestoneCard({ data }: MilestoneCardProps) {
             />
           </div>
           <div>
-            <p className="text-[1.4em] text-grays font-medium mb-0.5">
+            <p className="text-[1.5em] text-grays font-medium mb-0.5">
               {t("currentRank")}
             </p>
             <h3 className={`text-[2.2em] font-bold leading-none`}>
@@ -142,11 +142,11 @@ export default function MilestoneCard({ data }: MilestoneCardProps) {
       <div className="mt-8 relative z-10">
         {/* Earnings Row */}
         <div className="flex justify-between items-baseline mb-3">
-          <span className="text-[1.3em]">
+          <span className="text-[1.4em]">
             <span className="text-grays">{t("earnings")}: </span>
             <b className="text-bluelight">{formatCurrency(currentEarnings)}</b>
           </span>
-          <span className="text-[1.2em] text-grays">
+          <span className="text-[1.4em] text-grays">
             {t("target")}: {formatCurrency(nextTarget)}
           </span>
         </div>
@@ -164,7 +164,7 @@ export default function MilestoneCard({ data }: MilestoneCardProps) {
         </div>
 
         {/* Motivation Text */}
-        <p className="mt-3 text-[1.2em] text-grays">
+        <p className="mt-3 text-[1.3em] text-grays">
           <span className="text-bluelight font-semibold">
             {formatCurrency(nextTarget - currentEarnings)}
           </span>{" "}
@@ -179,7 +179,7 @@ export default function MilestoneCard({ data }: MilestoneCardProps) {
       <div className="mt-6 pt-4 border-t border-gray-dashboard/30 flex items-center justify-between relative z-10">
         <div className="flex items-center gap-2.5 opacity-70">
           <Lock className="w-4 h-4 text-grays" />
-          <span className="text-[1.15em] text-grays">
+          <span className="text-[1.3em] text-grays">
             {t("next")}:{" "}
             <span className="text-bluelight font-semibold">
               +{nextBonus}% CPM
@@ -189,7 +189,7 @@ export default function MilestoneCard({ data }: MilestoneCardProps) {
 
         <Link
           href="/levels"
-          className="flex items-center gap-1 text-[1.2em] font-semibold text-bluelight/70 hover:text-bluelight transition-colors group"
+          className="flex items-center gap-1 text-[1.3em] font-semibold text-bluelight/70 hover:text-bluelight transition-colors group"
         >
           {t("viewLevels")}
           <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

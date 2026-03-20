@@ -124,7 +124,7 @@ export default function TopCountriesCard({
               <Globe className="w-5 h-5 text-white" />
             </div>
             <div>
-              <h3 className="text-[1.6em] font-bold text-shortblack">
+              <h3 className="text-[1.8em] sm:text-[1.6em] font-bold text-shortblack">
                 {t("topCountries.title")}
               </h3>
             </div>
@@ -154,17 +154,17 @@ export default function TopCountriesCard({
             <Globe className="w-5 h-5 text-white" />
           </div>
           <div>
-            <h3 className="text-[1.6em] font-bold text-shortblack">
+            <h3 className="text-[1.8em] sm:text-[1.6em] font-bold text-shortblack">
               {t("topCountries.title")}
             </h3>
-            <p className="text-[1.1em] text-grays">
+            <p className="text-[1.4em] sm:text-[1.2em] text-grays">
               {t("topCountries.subtitle")}
             </p>
           </div>
         </div>
         <Link
           href="/analytics#countries"
-          className="flex items-center gap-1 text-[1.2em] text-bluelight hover:underline font-medium group"
+          className="flex items-center gap-1 text-[1.4em] text-bluelight hover:underline font-medium group"
         >
           <span>{t("topCountries.detail")}</span>
           <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
@@ -198,7 +198,7 @@ export default function TopCountriesCard({
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="flex items-center gap-3 p-3 rounded-xl hover:bg-blues/30 transition-colors group"
+                className="flex items-center gap-3 px-3 rounded-xl hover:bg-blues/30 transition-colors group"
               >
                 {/* Rank Badge */}
                 <div

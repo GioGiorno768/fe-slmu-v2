@@ -164,7 +164,7 @@ export default function TopPerformingLinksCard({
         ) : (
           <div
             onWheel={(e) => e.stopPropagation()}
-            className="space-y-0 overflow-y-auto h-[340px] p-2 custom-scrollbar-minimal"
+            className="space-y-0 overflow-y-auto h-[340px] pe-2 custom-scrollbar-minimal"
           >
             {sortedLinks.map((link, index) => (
               <div
@@ -201,10 +201,10 @@ export default function TopPerformingLinksCard({
 
                   {/* Link Info */}
                   <div className="flex-1 min-w-0">
-                    <p className="text-[1.3em] font-semibold text-shortblack truncate group-hover:text-bluelight transition-colors">
+                    <p className="text-[1.5em] sm:text-[1.3em] font-semibold text-shortblack truncate group-hover:text-bluelight transition-colors">
                       {link.title}
                     </p>
-                    <p className="text-[1.1em] text-grays truncate">
+                    <p className="text-[1.3em] sm:text-[1.2em] text-grays truncate">
                       {link.shortUrl}
                     </p>
                   </div>
@@ -214,7 +214,7 @@ export default function TopPerformingLinksCard({
                     href={link.shortUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 rounded-lg hover:bg-card transition-colors opacity-0 group-hover:opacity-100"
+                    className="p-2 rounded-lg hover:bg-card transition-colors"
                   >
                     <ExternalLink className="w-4 h-4 text-grays group-hover:text-bluelight transition-colors" />
                   </a>
@@ -224,17 +224,17 @@ export default function TopPerformingLinksCard({
                 <div className="flex items-center gap-3 mt-2 ml-12 flex-wrap">
                   <div className="flex items-center gap-1.5">
                     <Eye className="w-3.5 h-3.5 text-bluelight" />
-                    <span className="text-[1.1em] font-medium text-grays">
+                    <span className="text-[1.3em] font-medium text-grays">
                       {link.validViews.toLocaleString()}
                     </span>
-                    <span className="text-[1em] text-grays/50">
+                    <span className="text-[1.3em] text-grays/50">
                       {t("topLinks.views").toLowerCase()}
                     </span>
                   </div>
                   <span className="text-grays/25">•</span>
                   <div className="flex items-center gap-1.5">
                     <Coins className="w-3.5 h-3.5 text-green-500" />
-                    <span className="text-[1.1em] font-semibold text-tx-blue-dashboard">
+                    <span className="text-[1.3em] font-semibold text-tx-blue-dashboard">
                       ${link.totalEarnings.toFixed(5)}
                     </span>
                   </div>
@@ -253,7 +253,7 @@ export default function TopPerformingLinksCard({
       </div>
 
       {/* Footer Link */}
-      <div className=" text-center">
+      <div className=" text-center pt-4">
         <Link
           href="/new-link"
           className="text-[1.3em] font-semibold text-grays hover:text-bluelight flex items-center justify-center gap-1 transition-colors"
