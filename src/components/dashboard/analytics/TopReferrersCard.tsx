@@ -197,7 +197,7 @@ export default function TopReferrersCard({
               <Link2 className="w-5 h-5 text-white" />
             </div>
             <div>
-              <h3 className="text-[1.6em] font-bold text-shortblack">
+              <h3 className="text-[1.8em] sm:text-[1.6em] font-bold text-shortblack">
                 {t("topReferrers")}
               </h3>
             </div>
@@ -227,17 +227,17 @@ export default function TopReferrersCard({
             <Link2 className="w-5 h-5 text-white" />
           </div>
           <div>
-            <h3 className="text-[1.6em] font-bold text-shortblack">
+            <h3 className="text-[1.8em] sm:text-[1.6em] font-bold text-shortblack">
               {t("topReferrers")}
             </h3>
-            <p className="text-[1.1em] text-grays">Traffic sources</p>
+            <p className="text-[1.4em] sm:text-[1.2em] text-grays">Traffic sources</p>
           </div>
         </div>
 
         {/* Total badge */}
-        <div className="flex items-center gap-2 px-3 py-1.5 bg-indigo-500/20 border border-indigo-500/30 rounded-full">
+        <div className={`flex items-center gap-2 px-3 py-1.5 rounded-full ${isDark ? "bg-indigo-500/20 border border-indigo-500/30" : "bg-white shadow-sm shadow-slate-500/50"}`}>
           <TrendingUp className="w-4 h-4 text-indigo-500 dark:text-indigo-400" />
-          <span className="text-[1.2em] font-bold text-indigo-600 dark:text-indigo-400">
+          <span className="text-[1.3em] font-bold text-indigo-600 dark:text-indigo-400">
             {formatViews(totalViews)}
           </span>
         </div>

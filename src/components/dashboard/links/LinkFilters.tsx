@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import {
   Calendar,
   ChevronDown,
@@ -18,11 +18,30 @@ interface LinkFiltersProps {
   setFilters: (f: MemberLinkFilters) => void;
 }
 
+/**
+ * Determines whether a dropdown should open upward based on
+ * the available viewport space below the trigger element.
+ */
+function shouldOpenUpward(
+  ref: React.RefObject<HTMLDivElement | null>,
+  menuHeight = 250,
+): boolean {
+  if (!ref.current) return false;
+  const rect = ref.current.getBoundingClientRect();
+  const spaceBelow = window.innerHeight - rect.bottom;
+  return spaceBelow < menuHeight;
+}
+
 export default function LinkFilters({ filters, setFilters }: LinkFiltersProps) {
   const t = useTranslations("Dashboard");
   const [isSortOpen, setIsSortOpen] = useState(false);
   const [isStatusOpen, setIsStatusOpen] = useState(false);
   const [isLevelOpen, setIsLevelOpen] = useState(false);
+
+  // Track direction: false = open downward (default), true = open upward
+  const [sortUp, setSortUp] = useState(false);
+  const [statusUp, setStatusUp] = useState(false);
+  const [levelUp, setLevelUp] = useState(false);
 
   const sortRef = useRef<HTMLDivElement>(null);
   const statusRef = useRef<HTMLDivElement>(null);
@@ -127,6 +146,7 @@ export default function LinkFilters({ filters, setFilters }: LinkFiltersProps) {
           <div className="relative" ref={sortRef}>
             <button
               onClick={() => {
+                if (!isSortOpen) setSortUp(shouldOpenUpward(sortRef));
                 setIsSortOpen(!isSortOpen);
                 setIsStatusOpen(false);
                 setIsLevelOpen(false);
@@ -149,10 +169,13 @@ export default function LinkFilters({ filters, setFilters }: LinkFiltersProps) {
             <AnimatePresence>
               {isSortOpen && (
                 <motion.div
-                  initial={{ opacity: 0, y: -10 }}
+                  initial={{ opacity: 0, y: sortUp ? 10 : -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  className="absolute top-full left-0 mt-2 w-full md:w-44 bg-card rounded-xl border border-gray-dashboard/30 shadow-lg z-20 overflow-hidden"
+                  exit={{ opacity: 0, y: sortUp ? 10 : -10 }}
+                  className={clsx(
+                    "absolute left-0 w-full md:w-44 bg-card rounded-xl border border-gray-dashboard/30 shadow-lg z-20 overflow-hidden",
+                    sortUp ? "bottom-full mb-2" : "top-full mt-2",
+                  )}
                 >
                   {sortOptions.map((opt) => (
                     <button
@@ -180,6 +203,7 @@ export default function LinkFilters({ filters, setFilters }: LinkFiltersProps) {
           <div className="relative" ref={statusRef}>
             <button
               onClick={() => {
+                if (!isStatusOpen) setStatusUp(shouldOpenUpward(statusRef));
                 setIsStatusOpen(!isStatusOpen);
                 setIsSortOpen(false);
                 setIsLevelOpen(false);
@@ -202,10 +226,13 @@ export default function LinkFilters({ filters, setFilters }: LinkFiltersProps) {
             <AnimatePresence>
               {isStatusOpen && (
                 <motion.div
-                  initial={{ opacity: 0, y: -10 }}
+                  initial={{ opacity: 0, y: statusUp ? 10 : -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  className="absolute top-full right-0 mt-2 w-full md:w-48 bg-card rounded-xl border border-gray-dashboard/30 shadow-lg z-20 overflow-hidden"
+                  exit={{ opacity: 0, y: statusUp ? 10 : -10 }}
+                  className={clsx(
+                    "absolute right-0 w-full md:w-48 bg-card rounded-xl border border-gray-dashboard/30 shadow-lg z-20 overflow-hidden",
+                    statusUp ? "bottom-full mb-2" : "top-full mt-2",
+                  )}
                 >
                   {statusOptions.map((opt) => (
                     <button
@@ -233,6 +260,7 @@ export default function LinkFilters({ filters, setFilters }: LinkFiltersProps) {
           <div className="relative hidden" ref={levelRef}>
             <button
               onClick={() => {
+                if (!isLevelOpen) setLevelUp(shouldOpenUpward(levelRef));
                 setIsLevelOpen(!isLevelOpen);
                 setIsSortOpen(false);
                 setIsStatusOpen(false);
@@ -255,10 +283,13 @@ export default function LinkFilters({ filters, setFilters }: LinkFiltersProps) {
             <AnimatePresence>
               {isLevelOpen && (
                 <motion.div
-                  initial={{ opacity: 0, y: -10 }}
+                  initial={{ opacity: 0, y: levelUp ? 10 : -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  className="absolute top-full right-0 mt-2 w-full md:w-40 bg-card rounded-xl border border-gray-dashboard/30 shadow-lg z-20 overflow-hidden"
+                  exit={{ opacity: 0, y: levelUp ? 10 : -10 }}
+                  className={clsx(
+                    "absolute right-0 w-full md:w-40 bg-card rounded-xl border border-gray-dashboard/30 shadow-lg z-20 overflow-hidden",
+                    levelUp ? "bottom-full mb-2" : "top-full mt-2",
+                  )}
                 >
                   {levelOptions.map((opt) => (
                     <button

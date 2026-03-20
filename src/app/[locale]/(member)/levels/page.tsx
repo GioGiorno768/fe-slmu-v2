@@ -42,14 +42,14 @@ export default function LevelsPage() {
   return (
     <div className="lg:text-[10px] text-[8px] font-figtree pb-10">
       {/* Header Page */}
-      <div className="mb-8 text-center md:text-left">
+      {/* <div className="mb-8 text-center md:text-left">
         <h1 className="text-[2.5em] font-bold text-shortblack">
           {t("levelsPage.title")}
         </h1>
         <p className="text-[1.6em] text-grays mt-2">
           {t("levelsPage.description")}
         </p>
-      </div>
+      </div> */}
 
       {/* 1. Header: Data Progress User */}
       <CurrentLevelHeader data={userProgress} />

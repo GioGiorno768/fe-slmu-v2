@@ -142,7 +142,7 @@ export default function CurrentLevelHeader({ data }: CurrentLevelHeaderProps) {
 
             {/* Progress Bar */}
             <div className="space-y-2">
-              <div className="flex justify-between text-[1.2em] font-medium text-white/70">
+              <div className="flex justify-between text-[1.3em] font-medium text-white/70">
                 <span className="flex items-center gap-2">
                   <TrendingUp className="w-4 h-4" />
                   {formatCurrency(data.currentEarnings)}
@@ -162,7 +162,7 @@ export default function CurrentLevelHeader({ data }: CurrentLevelHeaderProps) {
                   <div className="absolute right-0 top-0 bottom-0 w-1.5 bg-white rounded-full" />
                 </motion.div>
               </div>
-              <p className="text-right text-[1.1em] text-white/60">
+              <p className="text-right text-[1.25em] text-white/60">
                 {data.progressPercent.toFixed(1)}% {t("levelsPage.complete")}
               </p>
             </div>

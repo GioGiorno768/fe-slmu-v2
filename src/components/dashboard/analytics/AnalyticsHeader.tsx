@@ -72,7 +72,7 @@ export default function AnalyticsHeader({
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.4, delay: 0.1 }}
-            className="mt-2 text-[1.3em] text-grays"
+            className="mt-2 text-[1.4em] text-grays"
           >
             {t("analyticsDescription")}
           </motion.p>
@@ -91,7 +91,7 @@ export default function AnalyticsHeader({
             whileTap={{ scale: 0.95 }}
             onClick={onRefresh}
             disabled={isRefetching}
-            className="flex items-center justify-center w-12 h-12 rounded-xl bg-subcard hover:bg-blues border border-gray-dashboard/30 hover:border-bluelight/30 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex items-center justify-center w-10 h-10 rounded-xl bg-subcard hover:bg-blues border border-gray-dashboard/30 hover:border-bluelight/30 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
             title="Refresh data"
           >
             <motion.div
@@ -103,7 +103,7 @@ export default function AnalyticsHeader({
               }}
             >
               <RefreshCw
-                className={`w-5 h-5 ${
+                className={`w-4 h-4 ${
                   isRefetching ? "text-bluelight" : "text-grays"
                 }`}
               />
@@ -116,7 +116,7 @@ export default function AnalyticsHeader({
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => setIsOpen(!isOpen)}
-              className="flex items-center gap-3 text-[1.4em] font-semibold text-shortblack bg-subcard hover:bg-blues px-6 py-3.5 rounded-2xl transition-all duration-300 border border-gray-dashboard/30 hover:border-bluelight/30"
+              className="flex items-center gap-3 text-[1.4em] font-semibold text-shortblack bg-subcard hover:bg-blues px-4 py-2.5 rounded-xl transition-all duration-300 border border-gray-dashboard/30 hover:border-bluelight/30"
             >
               <span>{currentLabel}</span>
               <motion.div

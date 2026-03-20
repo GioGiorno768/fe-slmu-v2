@@ -50,14 +50,14 @@ export default function LevelsGrid({ currentLevel, levels }: LevelsGridProps) {
       <div className="text-center mb-8">
         <div className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-500/20 rounded-full mb-4">
           <Sparkles className="w-4 h-4 text-indigo-500 dark:text-indigo-400" />
-          <span className="text-[1.2em] font-semibold text-indigo-600 dark:text-indigo-400">
+          <span className="text-[1.5em] lg:text-[1.3em] font-semibold text-indigo-600 dark:text-indigo-400">
             {t("levelsPage.allLevels")}
           </span>
         </div>
         <h2 className="text-[2.2em] font-bold text-shortblack">
           {t("levelsPage.levelBenefits")}
         </h2>
-        <p className="text-[1.4em] text-grays mt-2">
+        <p className="text-[1.5em] text-grays mt-2">
           {t("levelsPage.unlockDesc")}
         </p>
       </div>
@@ -175,7 +175,7 @@ export default function LevelsGrid({ currentLevel, levels }: LevelsGridProps) {
               {/* Benefits */}
               <ul className="space-y-2.5">
                 {level.benefits.map((benefit, i) => (
-                  <li key={i} className="flex items-start gap-3 text-[1.3em]">
+                  <li key={i} className="flex items-center gap-3 text-[1.3em]">
                     <div
                       className={clsx(
                         "p-1 rounded-full shrink-0 mt-0.5",

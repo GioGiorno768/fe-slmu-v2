@@ -139,7 +139,7 @@ export default function TopCountriesCard({
               <Globe className="w-5 h-5 text-white" />
             </div>
             <div>
-              <h3 className="text-[1.6em] font-bold text-shortblack">
+              <h3 className="text-[1.8em] sm:text-[1.6em] font-bold text-shortblack">
                 {t("topCountries.title")}
               </h3>
             </div>
@@ -169,19 +169,19 @@ export default function TopCountriesCard({
             <Globe className="w-5 h-5 text-white" />
           </div>
           <div>
-            <h3 className="text-[1.6em] font-bold text-shortblack">
+            <h3 className="text-[1.8em] sm:text-[1.6em] font-bold text-shortblack">
               {t("topCountries.title")}
             </h3>
-            <p className="text-[1.1em] text-grays">
+            <p className="text-[1.4em] sm:text-[1.2em] text-grays">
               {t("topCountries.subtitle")}
             </p>
           </div>
         </div>
 
         {/* Total badge */}
-        <div className="flex items-center gap-2 px-3 py-1.5 bg-emerald-500/20 border border-emerald-500/30 rounded-full">
-          <TrendingUp className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
-          <span className="text-[1.2em] font-bold text-emerald-600 dark:text-emerald-400">
+        <div className={`flex items-center gap-2 px-3 py-1.5 rounded-full ${isDark ? "bg-emerald-500/20 border border-emerald-500/30" : "bg-white shadow-sm shadow-slate-500/50"}`}>
+          <TrendingUp className={`w-4 h-4 ${isDark ? "text-emerald-500" : "text-green-500"}`} />
+          <span className={`text-[1.3em] font-bold ${isDark ? "text-emerald-500" : "text-green-500"}`}>
             {formatViews(totalViews)}
           </span>
         </div>

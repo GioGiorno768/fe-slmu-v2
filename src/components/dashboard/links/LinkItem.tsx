@@ -414,14 +414,15 @@ export default function LinkItem({
                   isDark ? "text-amber-400" : "text-amber-600",
                 )}
               />
-              <span
+              <button
+                onClick={() => setShowPassword(!showPassword)}
                 className={clsx(
-                  "text-xs font-medium",
+                  "text-xs font-medium hover:underline",
                   isDark ? "text-amber-400" : "text-amber-600",
                 )}
               >
-                {t("linkList.protected")}
-              </span>
+                {showPassword ? link.password : "••••••"}
+              </button>
             </div>
           )}
         </div>

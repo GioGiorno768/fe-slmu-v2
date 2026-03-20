@@ -152,7 +152,7 @@ export default function SharedStatsGrid({
           >
             {/* Header: Title */}
             <div className="flex items-center justify-between mb-2 relative z-10">
-              <p className="text-[1.5em] font-semibold text-grays tracking-tight">
+              <p className="text-[1.6em] font-semibold text-grays tracking-tight">
                 {card.title}
               </p>
               {card.trend !== undefined ? (
@@ -180,7 +180,7 @@ export default function SharedStatsGrid({
                   {card.value}
                 </h3>
                 <div className="flex items-start flex-col gap-2">
-                  <span className="text-[1.2em] text-slate-400 font-medium">
+                  <span className="text-[1.3em] text-slate-400 font-medium">
                     {card.subLabel}
                   </span>
                 </div>

@@ -11,6 +11,8 @@ import {
   X,
   Megaphone,
   ChevronDown,
+  Eye,
+  EyeOff,
 } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import type { EditableLinkData, AdLevel } from "@/types/type";
@@ -56,6 +58,7 @@ export default function EditLinkModal({
 
   // State Dropdown Ads Level
   const [isAdLevelDropdownOpen, setIsAdLevelDropdownOpen] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   // Map API data to dropdown options with lock status
   const adLevels = adLevelsFromApi.map((level, index) => ({
@@ -218,13 +221,24 @@ export default function EditLinkModal({
                   <div className="relative">
                     <Lock className="w-5 h-5 text-grays absolute left-4 top-1/2 -translate-y-1/2" />
                     <input
-                      type="password"
+                      type={showPassword ? "text" : "password"}
                       name="password"
                       value={formData.password}
                       onChange={handleChange}
-                      className="w-full text-[1.5em] pl-12 pr-5 py-3 rounded-xl border border-gray-dashboard/30 bg-subcard focus:bg-card focus:outline-none focus:ring-2 focus:ring-bluelight/50 focus:border-bluelight transition-all text-shortblack placeholder:text-grays"
+                      className="w-full text-[1.5em] pl-12 pr-12 py-3 rounded-xl border border-gray-dashboard/30 bg-subcard focus:bg-card focus:outline-none focus:ring-2 focus:ring-bluelight/50 focus:border-bluelight transition-all text-shortblack placeholder:text-grays"
                       placeholder={t("setPassword")}
                     />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 text-grays hover:text-shortblack transition-colors"
+                    >
+                      {showPassword ? (
+                        <EyeOff className="w-5 h-5" />
+                      ) : (
+                        <Eye className="w-5 h-5" />
+                      )}
+                    </button>
                   </div>
                 </div>
 
