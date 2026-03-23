@@ -62,10 +62,10 @@ export default function ReferralHowItWorks({
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
-          className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-500/20 rounded-full mb-4"
+          className={`inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4 ${isDark ? "bg-indigo-500/20" : "bg-white shadow-sm"}`}
         >
-          <Sparkles className="w-4 h-4 text-indigo-500 dark:text-indigo-400" />
-          <span className="text-[1.2em] font-semibold text-indigo-600 dark:text-indigo-400">
+          <Sparkles className={`w-4 h-4 ${isDark ? "text-indigo-400" : "text-bluelight"}`} />
+          <span className={`text-[1.4em] font-semibold ${isDark ? "text-indigo-400" : "text-bluelight"}`}>
             {t("referralPage.passiveIncome")}
           </span>
         </motion.div>
@@ -73,7 +73,7 @@ export default function ReferralHowItWorks({
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.05, duration: 0.3 }}
-          className="text-[2.4em] font-bold text-shortblack dark:text-white"
+          className="text-[2.4em] font-bold text-shortblack"
         >
           {t("referralPage.howItWorks")}
         </motion.h2>
@@ -142,7 +142,7 @@ export default function ReferralHowItWorks({
               <h3 className="text-[1.8em] font-bold text-shortblack dark:text-white mb-3">
                 {step.title}
               </h3>
-              <p className="text-[1.3em] text-grays leading-relaxed">
+              <p className="text-[1.4em] text-grays leading-relaxed">
                 {step.desc}
               </p>
 

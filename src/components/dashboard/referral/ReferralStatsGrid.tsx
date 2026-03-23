@@ -73,7 +73,7 @@ export default function ReferralStatsGrid({ stats }: ReferralStatsGridProps) {
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 font-figtree">
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 font-figtree">
       {statsData.map((stat, index) => {
         const Icon = stat.icon;
         return (
@@ -122,11 +122,11 @@ export default function ReferralStatsGrid({ stats }: ReferralStatsGridProps) {
 
               {/* Content */}
               <div className="flex-1">
-                <p className="text-[1.2em] text-grays mb-1">{stat.label}</p>
+                <p className="lg:text-[1.2em] text-[1.4em] text-grays mb-1">{stat.label}</p>
                 <h3 className="text-[2.4em] font-bold text-shortblack font-manrope leading-none">
                   {stat.value}
                 </h3>
-                <p className={clsx("text-[1.1em] mt-1", stat.textColor)}>
+                <p className={clsx("lg:text-[1.1em] text-[1.3em] mt-1", stat.textColor)}>
                   {stat.subLabel}
                 </p>
               </div>

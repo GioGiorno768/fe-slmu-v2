@@ -79,16 +79,17 @@ export default function ReferralHeader({
         </div>
 
         <div className="bg-white/10 backdrop-blur-md border border-white/20 p-2 rounded-2xl flex items-center gap-2 w-full lg:w-auto min-w-[300px] max-w-md">
-          <div
+          <input
+            type="text"
+            value={referralLink}
+            readOnly
             className={clsx(
-              "px-4 py-3 rounded-xl flex-1 truncate font-medium text-[1.4em]",
+              "px-4 py-3 rounded-xl flex-1 font-medium text-[1.4em]",
               isDark
                 ? "bg-slate-800/80 text-white border border-white/10"
                 : "bg-white text-shortblack",
             )}
-          >
-            {referralLink}
-          </div>
+          />
           <button
             onClick={handleCopy}
             className={clsx(

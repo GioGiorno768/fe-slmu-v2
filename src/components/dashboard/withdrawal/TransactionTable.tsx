@@ -223,23 +223,25 @@ export default function TransactionTable({
                   setIsMethodOpen(false);
                 }}
                 className={clsx(
-                  "flex items-center gap-2 px-4 py-3 rounded-xl border transition-colors text-[1.4em] min-w-[140px] justify-between",
+                  "flex items-center gap-2 px-4 py-3 rounded-xl border transition-colors text-[1.4em] w-full sm:w-auto justify-between",
                   isDark
                     ? "border-gray-dashboard/50 bg-subcard hover:bg-gray-dashboard/50"
                     : "border-gray-200 bg-white hover:bg-slate-50",
                 )}
               >
-                <Calendar className="w-4 h-4 text-grays" />
-                <span
-                  className={clsx(
-                    "font-medium",
-                    isDark ? "text-white" : "text-shortblack",
-                  )}
-                >
-                  {sortOrder === "newest"
-                    ? t("withdrawalPage.newest")
-                    : t("withdrawalPage.oldest")}
-                </span>
+                <div className="flex items-center gap-4">
+                  <Calendar className="w-4 h-4 text-grays" />
+                  <span
+                    className={clsx(
+                      "font-medium",
+                      isDark ? "text-white" : "text-shortblack",
+                    )}
+                  >
+                    {sortOrder === "newest"
+                      ? t("withdrawalPage.newest")
+                      : t("withdrawalPage.oldest")}
+                  </span>
+                </div>
                 <ChevronDown
                   className={clsx(
                     "w-4 h-4 text-grays transition-transform",
@@ -309,23 +311,25 @@ export default function TransactionTable({
                   setIsSortOpen(false);
                 }}
                 className={clsx(
-                  "flex items-center gap-2 px-4 py-3 rounded-xl border transition-colors text-[1.4em] min-w-[140px] justify-between",
+                  "flex items-center gap-2 px-4 py-3 rounded-xl border transition-colors text-[1.4em] w-full sm:w-auto justify-between",
                   isDark
                     ? "border-gray-dashboard/50 bg-subcard hover:bg-gray-dashboard/50"
                     : "border-gray-200 bg-white hover:bg-slate-50",
                 )}
               >
-                <Filter className="w-4 h-4 text-grays" />
-                <span
-                  className={clsx(
-                    "font-medium truncate max-w-[80px]",
-                    isDark ? "text-white" : "text-shortblack",
-                  )}
-                >
-                  {methodFilter === "all"
-                    ? t("withdrawalPage.allFilter")
-                    : methodFilter}
-                </span>
+                <div className="flex items-center gap-4">
+                  <Filter className="w-4 h-4 text-grays" />
+                  <span
+                    className={clsx(
+                      "font-medium truncate max-w-[80px]",
+                      isDark ? "text-white" : "text-shortblack",
+                    )}
+                  >
+                    {methodFilter === "all"
+                      ? t("withdrawalPage.allFilter")
+                      : methodFilter}
+                  </span>
+                </div>
                 <ChevronDown
                   className={clsx(
                     "w-4 h-4 text-grays transition-transform",
@@ -341,7 +345,7 @@ export default function TransactionTable({
                     exit={{ opacity: 0, y: -10 }}
                     onWheel={(e) => e.stopPropagation()}
                     className={clsx(
-                      "absolute top-full right-0 mt-2 w-48 rounded-xl border shadow-lg z-20 overflow-hidden max-h-60 overflow-y-auto",
+                      "absolute top-full right-0 mt-2 sm:w-48 w-full rounded-xl border shadow-lg z-20 overflow-hidden max-h-60 overflow-y-auto",
                       isDark
                         ? "bg-card border-gray-dashboard/50"
                         : "bg-white border-gray-200",
@@ -457,7 +461,7 @@ export default function TransactionTable({
                 {/* Right: Amount & Actions */}
                 <div className="flex items-center gap-4 sm:gap-6">
                   {/* Amount */}
-                  <div className="text-right">
+                  <div className="text-right flex sm:flex-col flex-row sm:items-end items-center gap-2">
                     <div
                       className={clsx(
                         "text-[1.6em] font-bold flex items-center gap-2 justify-end",

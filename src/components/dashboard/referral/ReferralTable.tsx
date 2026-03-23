@@ -98,7 +98,7 @@ export default function ReferralTable({ users }: ReferralTableProps) {
                       </span>
                       <span
                         className={clsx(
-                          "px-2 py-0.5 rounded-full text-[1em] font-medium whitespace-nowrap",
+                          "px-2 py-0.5 rounded-full text-[1.2em] lg:text-[1em] font-medium whitespace-nowrap",
                           user.status === "active"
                             ? "bg-green-500/20 text-green-700 dark:text-green-400"
                             : "bg-gray-100 dark:bg-gray-dashboard/30 text-gray-500 dark:text-gray-400",
@@ -111,7 +111,7 @@ export default function ReferralTable({ users }: ReferralTableProps) {
                     </div>
 
                     {/* Date - Desktop inline, Mobile below */}
-                    <div className="flex items-center gap-1 text-grays text-[1.2em] mt-0.5">
+                    <div className="flex items-center gap-1 text-grays text-[1.3em] mt-0.5">
                       <Calendar className="w-3 h-3" />
                       <span>
                         {t("referralPage.joined")}{" "}
@@ -127,10 +127,10 @@ export default function ReferralTable({ users }: ReferralTableProps) {
 
                 {/* Right Side - Earnings */}
                 <div className="text-right flex-shrink-0">
-                  <div className="text-[1em] text-grays mb-0.5 hidden sm:block">
+                  <div className="text-[1.2em] text-grays mb-0.5">
                     {t("referralPage.earnings")}
                   </div>
-                  <div className="font-bold text-bluelight text-[1.5em] sm:text-[1.6em]">
+                  <div className="font-bold text-bluelight text-[1.6em] sm:text-[1.6em]">
                     {formatCurrency(user.totalEarningsForMe)}
                   </div>
                 </div>
@@ -147,7 +147,7 @@ export default function ReferralTable({ users }: ReferralTableProps) {
                 ? t("referralPage.userNotFound")
                 : t("referralPage.noFriendsYet")}
             </p>
-            <p className="text-gray-400 text-[1.2em] mt-1">
+            <p className="text-gray-400 text-[1.3em] mt-1">
               {!searchTerm && t("referralPage.shareToInvite")}
             </p>
           </div>
@@ -170,7 +170,7 @@ export default function ReferralTable({ users }: ReferralTableProps) {
               key={page}
               onClick={() => handlePageChange(page)}
               className={clsx(
-                "w-8 h-8 rounded-lg text-[1.2em] font-bold transition-all",
+                "w-8 h-8 rounded-lg text-[1.3em] font-bold transition-all",
                 currentPage === page
                   ? "bg-bluelight text-white shadow-md shadow-blue-200 dark:shadow-blue-900/30"
                   : "bg-subcard border border-gray-200 dark:border-gray-dashboard/30 text-shortblack hover:bg-blues",

@@ -211,7 +211,7 @@ export default function Sidebar({
           custom:translate-x-0 custom:z-40 font-figtree custom:text-[10px] text-[8px] flex flex-col justify-between border-r-[2px] border-shd-card/10
         `}
       >
-        <div>
+        <div className="flex-1 min-h-0 flex flex-col">
           {/* Header Sidebar (Logo) */}
           <div
             className={`flex w-full items-center justify-between ${
@@ -274,7 +274,7 @@ export default function Sidebar({
           {/* Menu Items (List Utama) */}
           <nav
             onWheel={(e) => e.stopPropagation()}
-            className="mt-[1em] px-[1em] pb-24 overflow-y-auto h-[calc(100vh-100px)] custom-scrollbar-minimal"
+            className="mt-[1em] px-[1em] pb-24 overflow-y-auto flex-1 min-h-0 custom-scrollbar-minimal"
           >
             {menuItems.map((item, index) => {
               if (item.isHeader) {
@@ -321,7 +321,7 @@ export default function Sidebar({
         {/* ===================================== */}
         <div
           ref={userPopupRef}
-          className="absolute bottom-0 left-0 right-0 p-[1em] bg-inherit z-50"
+          className="sticky bottom-0 left-0 right-0 p-[1em] bg-inherit z-50"
         >
           {/* Popup Expanded */}
           <div
@@ -357,7 +357,7 @@ export default function Sidebar({
             <UserPopupContent />
           </div>
 
-          {/* Tombol Trigger */}
+          {/* Tombol Trigger -=*/}
           <button
             onClick={() => setIsUserPopupOpen(!isUserPopupOpen)}
             disabled={isLoading}
