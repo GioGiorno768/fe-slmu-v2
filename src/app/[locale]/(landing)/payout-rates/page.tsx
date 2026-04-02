@@ -110,7 +110,7 @@ export default async function PayoutRates() {
     {
       icon: Wallet,
       name: t("paymentMethods.digitalWallet"),
-      minPayout: "$5.00",
+      minPayout: "$7.00",
       processingTime: "1-3 days",
       iconBg: "bg-blue-50",
       iconColor: "text-blue-600",
@@ -118,19 +118,19 @@ export default async function PayoutRates() {
     {
       icon: Building2,
       name: t("paymentMethods.bankTransfer"),
-      minPayout: "$10.00",
-      processingTime: "3-7 days",
+      minPayout: "$7.00",
+      processingTime: "1-3 days",
       iconBg: "bg-green-50",
       iconColor: "text-green-600",
     },
-    {
-      icon: Coins,
-      name: t("paymentMethods.cryptocurrency"),
-      minPayout: "$25.00",
-      processingTime: "1-2 days",
-      iconBg: "bg-purple-50",
-      iconColor: "text-purple-600",
-    },
+    // {
+    //   icon: Coins,
+    //   name: t("paymentMethods.cryptocurrency"),
+    //   minPayout: "$25.00",
+    //   processingTime: "1-2 days",
+    //   iconBg: "bg-purple-50",
+    //   iconColor: "text-purple-600",
+    // },
   ];
 
   const features = [
@@ -219,7 +219,7 @@ export default async function PayoutRates() {
             </p>
           </AnimateOnView>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {paymentMethods.map((method, index) => (
               <AnimateOnView key={method.name} delay={index * 0.1}>
                 <div className="bg-white border border-slate-100 rounded-2xl p-6 text-center shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">

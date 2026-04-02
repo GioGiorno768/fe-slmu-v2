@@ -111,24 +111,49 @@ export default function PreferencesSection({
   }, []);
 
   // State Form (Default Value dari props or global context)
-  const [preferences, setPreferences] = useState<UserPreferences>({
-    language: (currentLocale as "en" | "id") || "en",
-    currency: globalCurrency || initialData?.currency || "USD",
-    timezone: initialData?.timezone || "Asia/Jakarta",
-    privacy: initialData?.privacy || {
-      loginAlert: true,
-      cookieConsent: true,
-      saveLoginInfo: false,
-    },
+  const [preferences, setPreferences] = useState<UserPreferences>(() => {
+    // Check jika ada pending currency reset dari language change
+    let initialCurrency = globalCurrency || initialData?.currency || "USD";
+    if (typeof window !== "undefined") {
+      const pendingReset = localStorage.getItem("currency_lang_reset");
+      if (pendingReset) {
+        initialCurrency = pendingReset;
+      }
+    }
+    return {
+      language: (currentLocale as "en" | "id") || "en",
+      currency: initialCurrency,
+      timezone: initialData?.timezone || "Asia/Jakarta",
+      privacy: initialData?.privacy || {
+        loginAlert: true,
+        cookieConsent: true,
+        saveLoginInfo: false,
+      },
+    };
   });
 
-  // Sinkronisasi state bahasa kalau locale berubah dari luar
+  // Check & apply pending currency reset dari language change (works on both remount & re-render)
   useEffect(() => {
-    setPreferences((prev) => ({
-      ...prev,
-      language: currentLocale as "en" | "id",
-    }));
-  }, [currentLocale]);
+    const pendingReset = localStorage.getItem("currency_lang_reset");
+    if (pendingReset) {
+      // Apply reset
+      setPreferences((prev) => ({
+        ...prev,
+        language: currentLocale as "en" | "id",
+        currency: pendingReset,
+      }));
+      setGlobalCurrency(pendingReset);
+      localStorage.setItem("preferred_currency", pendingReset);
+      // Clear flag so it doesn't re-trigger
+      localStorage.removeItem("currency_lang_reset");
+    } else {
+      // Normal sync - just update language
+      setPreferences((prev) => ({
+        ...prev,
+        language: currentLocale as "en" | "id",
+      }));
+    }
+  }, [currentLocale, setGlobalCurrency]);
 
   // Klik luar dropdown currency
   useEffect(() => {
@@ -146,7 +171,19 @@ export default function PreferencesSection({
 
   // Ganti Bahasa (Langsung Redirect Client-Side)
   const handleLanguageChange = (lang: "en" | "id") => {
-    setPreferences({ ...preferences, language: lang });
+    // Auto-set default currency based on language
+    const defaultCurrency = lang === "id" ? "IDR" : "USD";
+    setPreferences({ ...preferences, language: lang, currency: defaultCurrency });
+    setGlobalCurrency(defaultCurrency);
+
+    // Set flag di localStorage SEBELUM navigasi — ini yang paling reliable
+    // karena localStorage.setItem itu synchronous & survive across navigation
+    localStorage.setItem("preferred_currency", defaultCurrency);
+    localStorage.setItem("currency_lang_reset", defaultCurrency);
+
+    // Persist language preference via cookie (read by next-intl middleware)
+    document.cookie = `NEXT_LOCALE=${lang};path=/;max-age=${365 * 24 * 60 * 60}`;
+
     startTransition(() => {
       const currentParams = searchParams.toString();
       const targetPath = currentParams
@@ -289,8 +326,9 @@ export default function PreferencesSection({
                     initial={{ opacity: 0, y: 5, scale: 0.98 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 5, scale: 0.98 }}
+                    onWheel={(e) => e.stopPropagation()}
                     className={clsx(
-                      "absolute top-full left-0 right-0 mt-2 rounded-xl shadow-xl z-20 overflow-hidden p-1.5",
+                      "absolute top-full left-0 right-0 mt-2 rounded-xl shadow-xl z-20 overflow-y-auto max-h-[230px] p-1.5",
                       isDark
                         ? "bg-card border border-gray-800"
                         : "bg-white border border-gray-100",

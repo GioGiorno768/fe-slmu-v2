@@ -12,6 +12,7 @@ import { motion, AnimatePresence } from "motion/react";
 import clsx from "clsx";
 import type { MemberLinkFilters } from "@/types/type";
 import { useTranslations } from "next-intl";
+import { useTheme } from "next-themes";
 
 interface LinkFiltersProps {
   filters: MemberLinkFilters;
@@ -46,6 +47,13 @@ export default function LinkFilters({ filters, setFilters }: LinkFiltersProps) {
   const sortRef = useRef<HTMLDivElement>(null);
   const statusRef = useRef<HTMLDivElement>(null);
   const levelRef = useRef<HTMLDivElement>(null);
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  const isDark = mounted && resolvedTheme === "dark";
 
   // Click outside to close dropdowns
   useEffect(() => {
@@ -138,7 +146,7 @@ export default function LinkFilters({ filters, setFilters }: LinkFiltersProps) {
               onChange={(e) =>
                 setFilters({ ...filters, search: e.target.value })
               }
-              className="w-full pl-12 pr-4 py-3 rounded-xl bg-subcard border border-gray-dashboard/30 focus:outline-none focus:ring-2 focus:ring-bluelight/20 text-[1.4em] text-shortblack placeholder:text-grays transition-all"
+              className={`w-full pl-12 pr-4 py-3 rounded-xl border focus:outline-none focus:ring-2 focus:ring-bluelight text-[1.4em] transition-all ${isDark ? "bg-subcard border-gray-dashboard/50 text-white placeholder:text-gray-500" : "bg-white border-gray-200 text-shortblack"}`}
             />
           </div>
 
@@ -151,7 +159,12 @@ export default function LinkFilters({ filters, setFilters }: LinkFiltersProps) {
                 setIsStatusOpen(false);
                 setIsLevelOpen(false);
               }}
-              className="flex items-center gap-2 px-4 py-3 rounded-xl border border-gray-dashboard/30 bg-subcard hover:bg-blues transition-colors text-[1.4em] min-w-[130px] justify-between w-full"
+              className={clsx(
+                "flex items-center gap-2 px-4 py-3 rounded-xl border transition-colors text-[1.4em] bg-subcard w-full sm:w-auto justify-between",
+                isDark
+                  ? "border-gray-dashboard/50 hover:bg-gray-dashboard/50"
+                  : "border-gray-200 bg-white hover:bg-slate-50",
+              )}
             >
               <div className="flex items-start gap-4">
                 <Calendar className="w-4 h-4 text-grays" />
@@ -208,7 +221,12 @@ export default function LinkFilters({ filters, setFilters }: LinkFiltersProps) {
                 setIsSortOpen(false);
                 setIsLevelOpen(false);
               }}
-              className="flex items-center gap-2 px-4 py-3 rounded-xl border border-gray-dashboard/30 bg-subcard hover:bg-blues transition-colors text-[1.4em] min-w-[140px] justify-between w-full"
+              className={clsx(
+                "flex items-center gap-2 px-4 py-3 rounded-xl border transition-colors text-[1.4em] bg-subcard w-full sm:w-auto justify-between",
+                isDark
+                  ? "border-gray-dashboard/50 hover:bg-gray-dashboard/50"
+                  : "border-gray-200 bg-white hover:bg-slate-50",
+              )}
             >
               <div className="flex items-start gap-4">
                 <Activity className="w-4 h-4 text-grays" />

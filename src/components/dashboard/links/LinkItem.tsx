@@ -334,7 +334,7 @@ export default function LinkItem({
           {/* Ads Level */}
           <div
             className={clsx(
-              "items-center gap-1.5 px-3 py-1.5 rounded-lg hidden",
+              "flex items-center gap-1.5 px-3 py-1.5 rounded-lg",
               isDark ? "bg-purple-500/10" : "bg-purple-50",
             )}
           >

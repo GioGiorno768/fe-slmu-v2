@@ -11,7 +11,8 @@ export const routing = defineRouting({
   // Opsional: matikan prefix untuk default locale (misal '/about' bukan '/id/about')
   localePrefix: "as-needed",
 
-  // Disable browser Accept-Language detection - use defaultLocale instead
+  // Disable browser Accept-Language auto-detection (first-time visitors always get Indonesian)
+  // Language persistence is handled via NEXT_LOCALE cookie in custom middleware
   localeDetection: false,
 });
 

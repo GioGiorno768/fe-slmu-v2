@@ -90,6 +90,14 @@ export default function Navbar() {
   };
 
   const switchLanguage = (nextLocale: "en" | "id") => {
+    // Auto-reset currency sesuai bahasa yang dipilih
+    const defaultCurrency = nextLocale === "id" ? "IDR" : "USD";
+    localStorage.setItem("preferred_currency", defaultCurrency);
+    localStorage.setItem("currency_lang_reset", defaultCurrency);
+
+    // Persist language preference via cookie (read by next-intl middleware)
+    document.cookie = `NEXT_LOCALE=${nextLocale};path=/;max-age=${365 * 24 * 60 * 60}`;
+
     startTransition(() => {
       router.replace(pathname, { locale: nextLocale });
     });

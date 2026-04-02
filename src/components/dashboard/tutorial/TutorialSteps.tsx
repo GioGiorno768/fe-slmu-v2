@@ -1,19 +1,21 @@
+// src/components/dashboard/tutorial/TutorialSteps.tsx
 "use client";
 
 import { useState, useEffect } from "react";
 import { motion } from "motion/react";
-import { UserPlus, Gift, Wallet, ArrowRight, Sparkles } from "lucide-react";
+import {
+  UserPlus,
+  Link2,
+  Share2,
+  BanknoteArrowDown,
+  ArrowRight,
+  Sparkles,
+} from "lucide-react";
 import { useTheme } from "next-themes";
 import clsx from "clsx";
 import { useTranslations } from "next-intl";
 
-interface ReferralHowItWorksProps {
-  commissionRate: number;
-}
-
-export default function ReferralHowItWorks({
-  commissionRate,
-}: ReferralHowItWorksProps) {
+export default function TutorialSteps() {
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const t = useTranslations("Dashboard");
@@ -27,30 +29,39 @@ export default function ReferralHowItWorks({
   const steps = [
     {
       icon: UserPlus,
-      title: t("referralPage.step1Title"),
-      desc: t("referralPage.step1Desc"),
+      title: t("tutorialPage.step1Title"),
+      desc: t("tutorialPage.step1Desc"),
       gradient: "from-blue-500 to-indigo-600",
       shadowLight: "shadow-blue-200",
       shadowDark: "shadow-blue-900/40",
       number: "01",
     },
     {
-      icon: Gift,
-      title: t("referralPage.step2Title"),
-      desc: t("referralPage.step2Desc"),
+      icon: Link2,
+      title: t("tutorialPage.step2Title"),
+      desc: t("tutorialPage.step2Desc"),
       gradient: "from-purple-500 to-pink-600",
       shadowLight: "shadow-purple-200",
       shadowDark: "shadow-purple-900/40",
       number: "02",
     },
     {
-      icon: Wallet,
-      title: t("referralPage.step3Title"),
-      desc: t("referralPage.step3Desc", { rate: commissionRate }),
+      icon: Share2,
+      title: t("tutorialPage.step3Title"),
+      desc: t("tutorialPage.step3Desc"),
       gradient: "from-emerald-500 to-teal-600",
       shadowLight: "shadow-emerald-200",
       shadowDark: "shadow-emerald-900/40",
       number: "03",
+    },
+    {
+      icon: BanknoteArrowDown,
+      title: t("tutorialPage.step4Title"),
+      desc: t("tutorialPage.step4Desc"),
+      gradient: "from-amber-500 to-orange-600",
+      shadowLight: "shadow-amber-200",
+      shadowDark: "shadow-amber-900/40",
+      number: "04",
     },
   ];
 
@@ -62,11 +73,24 @@ export default function ReferralHowItWorks({
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
-          className={`inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4 ${isDark ? "bg-indigo-500/20" : "bg-white shadow-sm"}`}
+          className={clsx(
+            "inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4",
+            isDark ? "bg-amber-500/20" : "bg-white shadow-sm",
+          )}
         >
-          <Sparkles className={`w-4 h-4 ${isDark ? "text-indigo-400" : "text-bluelight"}`} />
-          <span className={`text-[1.4em] font-semibold ${isDark ? "text-indigo-400" : "text-bluelight"}`}>
-            {t("referralPage.passiveIncome")}
+          <Sparkles
+            className={clsx(
+              "w-4 h-4",
+              isDark ? "text-amber-400" : "text-amber-600",
+            )}
+          />
+          <span
+            className={clsx(
+              "text-[1.4em] font-semibold",
+              isDark ? "text-amber-400" : "text-amber-600",
+            )}
+          >
+            {t("tutorialPage.quickGuide")}
           </span>
         </motion.div>
         <motion.h2
@@ -75,7 +99,7 @@ export default function ReferralHowItWorks({
           transition={{ delay: 0.05, duration: 0.3 }}
           className="text-[2.4em] font-bold text-shortblack"
         >
-          {t("referralPage.howItWorks")}
+          {t("tutorialPage.quickGuide")}
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 10 }}
@@ -83,19 +107,19 @@ export default function ReferralHowItWorks({
           transition={{ delay: 0.1, duration: 0.3 }}
           className="text-[1.4em] text-grays mt-2"
         >
-          {t("referralPage.howItWorksDesc")}
+          {t("tutorialPage.quickGuideDesc")}
         </motion.p>
       </div>
 
-      {/* Steps */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+      {/* Steps Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
         {/* Connection line (desktop only) */}
         <div
           className={clsx(
-            "hidden md:block absolute top-1/2 left-1/4 right-1/4 h-0.5 -translate-y-1/2 z-0",
+            "hidden lg:block absolute top-1/2 left-[12%] right-[12%] h-0.5 -translate-y-1/2 z-0",
             isDark
-              ? "bg-gradient-to-r from-blue-500/30 via-purple-500/30 to-emerald-500/30"
-              : "bg-gradient-to-r from-blue-200 via-purple-200 to-emerald-200",
+              ? "bg-gradient-to-r from-blue-500/30 via-purple-500/30 via-emerald-500/30 to-amber-500/30"
+              : "bg-gradient-to-r from-blue-200 via-purple-200 via-emerald-200 to-amber-200",
           )}
         />
 
@@ -122,34 +146,34 @@ export default function ReferralHowItWorks({
                     isDark ? step.shadowDark : step.shadowLight,
                   )}
                 >
-                  {t("referralPage.step")} {step.number}
+                  Step {step.number}
                 </span>
               </div>
 
               {/* Icon */}
               <div
                 className={clsx(
-                  "w-20 h-20 mx-auto rounded-2xl flex items-center justify-center mb-6 mt-4 shadow-lg bg-gradient-to-br",
+                  "w-16 h-16 mx-auto rounded-2xl flex items-center justify-center mb-5 mt-4 shadow-lg bg-gradient-to-br",
                   "group-hover:scale-105 transition-transform duration-200",
                   step.gradient,
                   isDark ? step.shadowDark : step.shadowLight,
                 )}
               >
-                <step.icon className="w-10 h-10 text-white" />
+                <step.icon className="w-8 h-8 text-white" />
               </div>
 
               {/* Content */}
-              <h3 className="text-[1.8em] font-bold text-shortblack">
+              <h3 className="text-[1.6em] font-bold text-shortblack mb-1">
                 {step.title}
               </h3>
-              <p className="text-[1.4em] text-grays leading-relaxed">
+              <p className="text-[1.3em] text-grays leading-relaxed">
                 {step.desc}
               </p>
 
               {/* Arrow indicator (mobile only) */}
               {i < steps.length - 1 && (
-                <div className="md:hidden flex justify-center mt-6">
-                  <ArrowRight className="w-6 h-6 text-gray-300 dark:text-gray-600 rotate-90" />
+                <div className="lg:hidden flex justify-center mt-5">
+                  <ArrowRight className="w-5 h-5 text-gray-300 dark:text-gray-600 rotate-90" />
                 </div>
               )}
             </div>
@@ -157,14 +181,16 @@ export default function ReferralHowItWorks({
         ))}
       </div>
 
-      {/* Bottom CTA hint */}
+      {/* Bottom Pro Tip */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 0.5, duration: 0.3 }}
+        transition={{ delay: 0.6, duration: 0.3 }}
         className="text-center mt-10"
       >
-        <p className="text-[1.3em] text-grays">{t("referralPage.proTip")}</p>
+        <p className="text-[1.3em] text-grays">
+          {t("tutorialPage.proTip")}
+        </p>
       </motion.div>
     </div>
   );

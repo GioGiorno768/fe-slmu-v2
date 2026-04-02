@@ -207,7 +207,7 @@ export default function TransactionTable({
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 className={clsx(
-                  "w-full pl-12 pr-4 py-3 rounded-xl border focus:outline-none focus:ring-2 focus:ring-bluelight/20 text-[1.4em] transition-all",
+                  "w-full pl-12 pr-4 py-3 rounded-xl border focus:outline-none focus:ring-2 focus:ring-bluelight text-[1.4em] transition-all",
                   isDark
                     ? "bg-subcard border-gray-dashboard/50 text-white placeholder:text-gray-500"
                     : "bg-white border-gray-200 text-shortblack",
@@ -541,12 +541,20 @@ export default function TransactionTable({
             </motion.div>
           ))
         ) : (
-          <div className="p-12 text-center">
-            <div className="text-grays text-[1.4em]">
+          <div className="p-8 text-center">
+            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gray-100 dark:bg-gray-dashboard/30 flex items-center justify-center">
+              <Wallet className="w-8 h-8 text-gray-400" />
+            </div>
+            <p className="text-grays text-[1.4em]">
               {search || methodFilter !== "all"
                 ? t("withdrawalPage.noMatchingTx")
                 : t("withdrawalPage.noTxHistory")}
-            </div>
+            </p>
+            <p className="text-gray-400 text-[1.3em] mt-1">
+              {search || methodFilter !== "all"
+                ? t("withdrawalPage.noMatchingTxSubtitle")
+                : t("withdrawalPage.noTxHistorySubtitle")}
+            </p>
           </div>
         )}
       </div>

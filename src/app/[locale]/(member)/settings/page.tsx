@@ -136,7 +136,7 @@ export default function SettingsPage() {
               : "bg-white border border-gray-100",
           )}
         >
-          <div className="grid lg:grid-cols-1 grid-cols-2 gap-2">
+          <div className="grid lg:grid-cols-1 md:grid-cols-2 grid-cols-4 gap-2">
             {TABS.map((tab) => {
               const isActive = activeTab === tab.id;
               return (
@@ -153,7 +153,9 @@ export default function SettingsPage() {
                   )}
                 >
                   <tab.icon className="w-5 h-5" />
-                  {t(TAB_KEYS[tab.id])}
+                  <span className="md:block hidden">
+                    {t(TAB_KEYS[tab.id])}
+                  </span>
                 </button>
               );
             })}

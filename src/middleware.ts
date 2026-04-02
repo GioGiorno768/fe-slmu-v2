@@ -193,6 +193,7 @@ export default async function middleware(request: NextRequest) {
       "my-links",
       "notifications",
       "profile",
+      "tutorial",
       // Landing pages
       "about",
       "contact",
@@ -294,6 +295,7 @@ export default async function middleware(request: NextRequest) {
     "/referral",
     "/settings",
     "/withdrawal",
+    "/tutorial",
   ];
   const isMemberPath = memberRoutes.some((route) => pathname.includes(route));
 
@@ -355,7 +357,28 @@ export default async function middleware(request: NextRequest) {
     }
   }
 
-  // 4. Lanjut ke i18n Handler
+  // 4. LOCALE PERSISTENCE via NEXT_LOCALE cookie
+  // If user has a stored language preference (set when switching language anywhere),
+  // redirect them to their preferred locale when visiting without explicit locale prefix
+  const preferredLocale = request.cookies.get("NEXT_LOCALE")?.value;
+  if (
+    preferredLocale &&
+    VALID_LOCALES.includes(preferredLocale as Locale) &&
+    preferredLocale !== "id" // Only redirect for non-default locale
+  ) {
+    const firstSegment = segments[0];
+    const hasLocalePrefix = VALID_LOCALES.includes(firstSegment as Locale);
+
+    // If URL doesn't have a locale prefix, user is on default locale (id)
+    // but their preference says otherwise → redirect to preferred locale
+    if (!hasLocalePrefix) {
+      const url = request.nextUrl.clone();
+      url.pathname = `/${preferredLocale}${pathname}`;
+      return NextResponse.redirect(url);
+    }
+  }
+
+  // 5. Lanjut ke i18n Handler
   return intlMiddleware(request);
 }
 

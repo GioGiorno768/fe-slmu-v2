@@ -1,6 +1,8 @@
 // src/components/dashboard/TopPerformingLinksCard.tsx
 "use client";
 
+import { useCurrency } from "@/contexts/CurrencyContext";
+
 import { useState, useRef, useEffect, useMemo } from "react";
 import { useTranslations } from "next-intl";
 import {
@@ -33,6 +35,7 @@ export default function TopPerformingLinksCard({
   data,
 }: TopPerformingLinksCardProps) {
   const t = useTranslations("Dashboard");
+  const { format: formatCurrency } = useCurrency();
 
   // State UI
   const [sortBy, setSortBy] = useState<"highest" | "lowest">("highest");
@@ -235,16 +238,18 @@ export default function TopPerformingLinksCard({
                   <div className="flex items-center gap-1.5">
                     <Coins className="w-3.5 h-3.5 text-green-500" />
                     <span className="text-[1.3em] font-semibold text-tx-blue-dashboard">
-                      ${link.totalEarnings.toFixed(5)}
+                      {formatCurrency(link.totalEarnings)}
                     </span>
                   </div>
                   <span className="text-grays/25">•</span>
-                  {/* <div className="flex items-center gap-1.5">
+                  {/* TODO: TAMPILKAN ADS LEVEL */}
+                  <div className="flex items-center gap-1.5">
                     <Megaphone className="w-3.5 h-3.5 text-purple-500" />
                     <span className="text-[1.1em] font-medium text-grays capitalize">
                       {link.adsLevel}
                     </span>
-                  </div> */}
+                  </div>
+                  {/* TODO: TAMPILKAN ADS LEVEL */}
                 </div>
               </div>
             ))}

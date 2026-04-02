@@ -20,13 +20,14 @@ import {
   Crown,
   DollarSign,
   Group,
+  BookOpen,
 } from "lucide-react";
 import type { Role, NavItem } from "@/types/type";
 
 // === MENU MEMBER (Gak berubah) ===
 export const getMemberMenu = (t: any): NavItem[] => [
   { icon: LayoutDashboard, label: t("title"), href: "/dashboard" },
-  // { icon: Megaphone, label: t("adsInfo"), href: "/ads-info" },
+  { icon: Megaphone, label: t("adsInfo"), href: "/ads-info" },
   {
     icon: Link2,
     label: t("myLinks"),
@@ -39,6 +40,7 @@ export const getMemberMenu = (t: any): NavItem[] => [
   { icon: Crown, label: "Rank", href: "/levels" },
   { icon: UserPlus2, label: t("referral"), href: "/referral" },
   { icon: BanknoteArrowDown, label: t("withdrawal"), href: "/withdrawal" },
+  { icon: BookOpen, label: t("tutorial"), href: "/tutorial" },
   // { icon: History, label: t("history"), href: "/history" },
 ];
 

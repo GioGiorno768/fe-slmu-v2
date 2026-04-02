@@ -94,19 +94,21 @@ export default function WithdrawalStatsCard({
     >
       {/* Header Section (Judul & Tombol) */}
       <div className="p-8 pb-4 flex justify-between items-start z-10">
-        <div>
-          <h2
-            className={clsx(
-              "text-[1.8em] font-bold flex items-center gap-2",
-              isDark ? "text-white" : "text-shortblack",
-            )}
-          >
-            <Wallet className="w-6 h-6 text-bluelight" />
-            {t("withdrawalPage.financeOverview")}
-          </h2>
-          <p className="text-[1.3em] text-grays mt-1">
-            {t("withdrawalPage.financeDesc")}
-          </p>
+        <div className="flex items-center gap-4">
+          <Wallet className="w-8.5 h-8.5 text-bluelight" />
+          <div className="space-y-0">
+            <h2
+              className={clsx(
+                "text-[1.8em] font-bold flex items-center gap-2",
+                isDark ? "text-white" : "text-shortblack",
+              )}
+            >
+              {t("withdrawalPage.financeOverview")}
+            </h2>
+            <p className="text-[1.3em] text-grays mt-1">
+              {t("withdrawalPage.financeDesc")}
+            </p>
+          </div>
         </div>
 
         {/* Tombol Request Payout ditaruh di atas biar gampang dijangkau */}

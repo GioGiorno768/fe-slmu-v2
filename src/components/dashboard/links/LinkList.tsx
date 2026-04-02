@@ -1,7 +1,7 @@
 // src/components/dashboard/links/LinkList.tsx
 "use client";
 
-import { Loader2 } from "lucide-react";
+import { Loader2, Link2 } from "lucide-react";
 import LinkItem from "./LinkItem";
 import LinkFilters from "./LinkFilters";
 import Pagination from "../Pagination";
@@ -49,9 +49,17 @@ export default function LinkList({
         {showLoading ? (
           <Spinner />
         ) : links.length === 0 ? (
-          <p className="text-center text-grays py-8">
-            {t("linkList.noLinksFound")}
-          </p>
+          <div className="p-8 text-center">
+            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gray-100 dark:bg-gray-dashboard/30 flex items-center justify-center">
+              <Link2 className="w-8 h-8 text-gray-400" />
+            </div>
+            <p className="text-grays text-[1.4em]">
+              {t("linkList.noLinksFound")}
+            </p>
+            <p className="text-gray-400 text-[1.3em] mt-1">
+              {t("linkList.noLinksSubtitle")}
+            </p>
+          </div>
         ) : (
           links.map((link) => (
             <LinkItem

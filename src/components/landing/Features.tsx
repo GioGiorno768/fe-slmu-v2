@@ -41,11 +41,11 @@ export default async function Features() {
       title: t("highCpm.title"),
       desc: t("highCpm.desc"),
     },
-    {
-      icon: Headphones,
-      title: t("support.title"),
-      desc: t("support.desc"),
-    },
+    // {
+    //   icon: Headphones,
+    //   title: t("support.title"),
+    //   desc: t("support.desc"),
+    // },
     {
       icon: Award,
       title: t("levels.title"),
@@ -56,11 +56,11 @@ export default async function Features() {
       title: t("customization.title"),
       desc: t("customization.desc"),
     },
-    // {
-    //   icon: Zap,
-    //   title: t("multiAds.title"),
-    //   desc: t("multiAds.desc"),
-    // },
+    {
+      icon: Zap,
+      title: t("multiAds.title"),
+      desc: t("multiAds.desc"),
+    },
     {
       icon: Sparkles,
       title: t("cleanUI.title"),

@@ -326,7 +326,7 @@ export default function CreateShortlink({
                   </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 transition-all duration-300 mt-4">
-                  <div className="relative col-span-2">
+                  <div className="relative">
                     <Calendar className="w-4 h-4 text-grays absolute left-4 top-1/2 -translate-y-1/2" />
                     <input
                       type="datetime-local"
@@ -337,7 +337,8 @@ export default function CreateShortlink({
                       min={getMinDateTimeLocal()}
                     />
                   </div>
-                  {/* <div
+                  {/* awal ads */}
+                  <div
                     className="relative justify-stretch items-stretch gap-3 flex"
                     ref={adsLevelRef}
                   >
@@ -407,7 +408,8 @@ export default function CreateShortlink({
                     >
                       <Megaphone className="w-6 h-6 text-bluelight" />
                     </Link>
-                  </div> */}
+                  </div>
+                  {/* batas ads */}
                 </div>
               </motion.div>
             )}

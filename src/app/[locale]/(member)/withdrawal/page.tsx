@@ -118,7 +118,7 @@ export default function WithdrawalPage() {
             )}
           />
         </div>
-        <div className="text-[1.4em] leading-relaxed">
+        <div className="lg:text-[1.4em] text-[1.6em] leading-relaxed">
           <p>
             <span className="font-bold">{t("withdrawalPage.infoTitle")}</span>{" "}
             {t.rich("withdrawalPage.infoDesc", {

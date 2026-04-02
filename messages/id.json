@@ -166,7 +166,7 @@
       },
       "multiAds": {
         "title": "Multi-Level Iklan",
-        "desc": "Pilih level iklan (1-5 langkah) untuk memaksimalkan pendapatan Anda."
+        "desc": "Pilih level iklan untuk memaksimalkan pendapatan Anda."
       },
       "payouts": {
         "title": "Pembayaran Cepat",
@@ -741,10 +741,10 @@
         {
           "slug": "latest-shortlinkmu-features-update",
           "category": "updates",
-          "title": "Update Fitur Terbaru Shortlinkmu Februari 2026",
-          "excerpt": "Shortlinkmu meluncurkan fitur baru: statistik real-time, custom alias, dan peningkatan rate CPM untuk Asia.",
+          "title": "Update Fitur Terbaru Shortlinkmu April 2026",
+          "excerpt": "Sistem Ads Level baru, halaman Tutorial dengan video panduan, halaman Ads Info, dan peningkatan UI empty state di seluruh dashboard.",
           "author": "Tim Shortlinkmu",
-          "date": "01 Feb 2026",
+          "date": "01 Apr 2026",
           "readTime": 4
         }
       ],
@@ -950,31 +950,31 @@
         "latest-shortlinkmu-features-update": {
           "sections": [
             {
-              "heading": "Statistik Real-Time",
+              "heading": "Sistem Ads Level — Resmi Aktif!",
               "paragraphs": [
-                "Kini Anda bisa memantau performa link secara real-time langsung dari dashboard. Data klik, lokasi pengunjung, dan penghasilan diupdate setiap detik tanpa perlu refresh halaman.",
-                "Fitur ini memungkinkan Anda membuat keputusan lebih cepat tentang strategi promosi dan mengidentifikasi link mana yang paling menghasilkan."
+                "Kami resmi meluncurkan sistem Ads Level di seluruh platform! Sekarang kamu bisa memilih level iklan (Rendah, Sedang, Tinggi, atau Agresif) saat membuat shortlink — baik untuk link tunggal maupun pembuatan link massal.",
+                "Setiap level iklan menawarkan keseimbangan berbeda antara kenyamanan pengunjung dan pendapatan. Level iklan yang lebih tinggi berarti penghasilan lebih besar per klik, tapi mungkin mempengaruhi kenyamanan pengunjung. Kamu juga bisa mengubah level iklan kapan saja melalui modal Edit Link."
               ]
             },
             {
-              "heading": "Custom Alias",
+              "heading": "Halaman Tutorial Baru",
               "paragraphs": [
-                "Fitur custom alias telah ditingkatkan! Sekarang Anda bisa membuat shortlink dengan nama custom yang lebih panjang dan mendukung karakter khusus.",
-                "Link dengan custom alias terlihat lebih profesional dan meningkatkan kepercayaan pengunjung. Contoh: shortlinkmu.com/promo-spesial lebih menarik dari kode acak."
+                "Halaman Tutorial khusus kini tersedia di dashboard kamu! Akses dari menu sidebar untuk menemukan panduan video langkah demi langkah tentang cara menggunakan setiap fitur Shortlinkmu.",
+                "Halaman ini mencakup video panduan utama, quick start guide dengan 4 langkah sederhana, dan video tutorial tambahan tentang optimasi CPM, penarikan dana, dan program referral. Cocok banget untuk publisher baru yang baru mulai!"
               ]
             },
             {
-              "heading": "Peningkatan Rate CPM Asia",
+              "heading": "Halaman Ads Info Kembali",
               "paragraphs": [
-                "Kabar baik! Rate CPM untuk region Asia telah meningkat signifikan. Indonesia naik 15%, India naik 20%, dan Filipina naik 18% dibanding bulan lalu.",
-                "Peningkatan ini sejalan dengan pertumbuhan pasar iklan digital di Asia dan kemitraan baru kami dengan ad network premium."
+                "Halaman Ads Info sudah kembali di sidebar! Sekarang kamu bisa melihat informasi detail tentang setiap level iklan, termasuk persentase pendapatan, jenis iklan, dan preview demo.",
+                "Halaman ini membantu kamu membuat keputusan yang tepat tentang level iklan mana yang akan digunakan untuk link-link kamu. Bandingkan fitur dan potensi pendapatan dari setiap level sebelum membuat shortlink."
               ]
             },
             {
-              "heading": "Pencairan Lebih Cepat",
+              "heading": "Peningkatan UI Dashboard",
               "paragraphs": [
-                "Minimum pencairan tetap rendah dan proses pencairan kini lebih cepat. Dana masuk ke rekening Anda dalam 1-3 hari kerja via bank transfer, PayPal, atau cryptocurrency.",
-                "Kami juga menambahkan dukungan untuk metode pembayaran baru termasuk DANA dan GoPay untuk kemudahan publisher Indonesia."
+                "Kami memperbarui desain empty state di seluruh dashboard. Daftar link dan riwayat transaksi penarikan kini menampilkan empty state yang bersih dan visual dengan ikon yang membantu serta pesan deskriptif — sesuai dengan gaya yang digunakan di Daftar Teman referral.",
+                "Peningkatan ini membuat dashboard terasa lebih premium dan memberikan panduan yang lebih baik saat kamu baru memulai atau saat tidak ada data yang cocok dengan filter kamu."
               ]
             }
           ]
@@ -1001,7 +1001,7 @@
       },
       "feature": {
         "title": "Ajak Teman, Panen Cuan! 💸",
-        "desc": "Dapatkan komisi 25% seumur hidup & temanmu dapet bonus $1.2 saat daftar. Bagikan link referral-mu sekarang!",
+        "desc": "Dapatkan komisi 25% seumur hidup & temanmu dapet bonus $1.2 saat daftar!",
         "cta": "Atur Payment"
       }
     },
@@ -1164,6 +1164,7 @@
     },
     "linkList": {
       "noLinksFound": "Tidak ada link yang sesuai kriteria.",
+      "noLinksSubtitle": "Coba buat shortlink baru atau sesuaikan filter kamu!",
       "title": "Link Saya",
       "searchPlaceholder": "Cari berdasarkan judul, URL, atau alias...",
       "sortNewest": "Terbaru",
@@ -1311,7 +1312,9 @@
       "fee": "Biaya:",
       "cancel": "Batalkan",
       "noMatchingTx": "Tidak ada transaksi yang cocok dengan filter.",
-      "noTxHistory": "Belum ada riwayat transaksi."
+      "noMatchingTxSubtitle": "Coba sesuaikan pencarian atau filter kamu.",
+      "noTxHistory": "Belum ada riwayat transaksi.",
+      "noTxHistorySubtitle": "Riwayat penarikan kamu akan muncul di sini."
     },
     "settingsPage": {
       "accountSettings": "Pengaturan Akun",
@@ -1420,6 +1423,34 @@
       "deleteNotifTitle": "Hapus Notifikasi?",
       "deleteNotifMessage": "Notifikasi yang sudah dihapus tidak dapat dikembalikan.",
       "cancel": "Batal"
+    },
+    "tutorial": "Tutorial",
+    "tutorialPage": {
+      "title": "Tutorial &",
+      "titleHighlight": "Panduan",
+      "subtitle": "Pelajari cara memaksimalkan penghasilanmu di Shortlinkmu",
+      "videoSection": "Video Tutorial",
+      "videoSectionDesc": "Tonton panduan video langkah demi langkah untuk memulai",
+      "featuredBadge": "Unggulan",
+      "quickGuide": "Panduan Cepat",
+      "quickGuideDesc": "Ikuti langkah-langkah sederhana ini untuk mulai menghasilkan",
+      "step1Title": "Buat Akun",
+      "step1Desc": "Daftar gratis dan verifikasi email untuk mengaktifkan akun kamu.",
+      "step2Title": "Buat Shortlink",
+      "step2Desc": "Tempel URL kamu, kustomisasi alias, dan buat shortlink.",
+      "step3Title": "Bagikan ke Mana Saja",
+      "step3Desc": "Bagikan link kamu di sosial media, grup WhatsApp, dan forum.",
+      "step4Title": "Tarik Penghasilan",
+      "step4Desc": "Capai batas minimum dan tarik ke metode pembayaran pilihanmu.",
+      "proTip": "💡 Konsistensi adalah kunci! Bagikan 5-10 link berkualitas setiap hari untuk hasil terbaik.",
+      "video1Title": "Memulai dengan Shortlinkmu",
+      "video1Desc": "Panduan lengkap pemula untuk membuat shortlink pertama dan menghasilkan uang.",
+      "video2Title": "Maksimalkan Pendapatan CPM",
+      "video2Desc": "Tips dan trik untuk menarget sumber traffic CPM tinggi.",
+      "video3Title": "Tutorial Penarikan Dana",
+      "video3Desc": "Panduan langkah demi langkah untuk menarik penghasilan kamu.",
+      "video4Title": "Panduan Program Referral",
+      "video4Desc": "Cara mendapatkan passive income melalui sistem referral."
     }
   },
   "AdminDashboard": {
