@@ -48,9 +48,9 @@ export default function LevelsGrid({ currentLevel, levels }: LevelsGridProps) {
     <div className="mt-10">
       {/* Section Header */}
       <div className="text-center mb-8">
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-500/20 rounded-full mb-4">
-          <Sparkles className="w-4 h-4 text-indigo-500 dark:text-indigo-400" />
-          <span className="text-[1.5em] lg:text-[1.3em] font-semibold text-indigo-600 dark:text-indigo-400">
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-white shadow-sm rounded-full mb-4">
+          <Sparkles className="w-4 h-4 text-bluelight" />
+          <span className="text-[1.5em] lg:text-[1.3em] font-semibold text-bluelight">
             {t("levelsPage.allLevels")}
           </span>
         </div>

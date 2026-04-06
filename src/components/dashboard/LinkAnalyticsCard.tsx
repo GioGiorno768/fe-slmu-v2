@@ -281,7 +281,7 @@ export default function LinkAnalyticsCard({
         show: false,
       },
     }),
-    [data, stat, range, formatCurrency, isDark]
+    [data, stat, range, formatCurrency, isDark],
   );
 
   // Close dropdown on click outside
@@ -302,14 +302,20 @@ export default function LinkAnalyticsCard({
   return (
     <div className="bg-card p-6 rounded-3xl shadow-sm shadow-slate-500/50 hover:shadow-lg transition-shadow duration-200 h-full flex flex-col">
       {/* Header */}
-      <div className={path.includes("/dashboard") ? "flex flex-row items-start sm:items-center justify-between mb-4 gap-4" : "flex sm:flex-row flex-col items-start sm:items-center justify-between mb-4 gap-4"}>
+      <div
+        className={
+          path.includes("/dashboard")
+            ? "flex flex-row items-start sm:items-center justify-between mb-4 gap-4"
+            : "flex sm:flex-row flex-col items-start sm:items-center justify-between mb-4 gap-4"
+        }
+      >
         <div className="flex items-center gap-3">
           <div
             className={clsx(
               "w-10 h-10 rounded-xl flex items-center justify-center shadow-lg",
               stat === "totalEarnings"
                 ? "bg-gradient-to-br from-emerald-500 to-teal-600 shadow-emerald-200"
-                : "bg-gradient-to-br from-indigo-500 to-purple-600 shadow-lightpurple-dashboard"
+                : "bg-gradient-to-br from-indigo-500 to-purple-600 shadow-lightpurple-dashboard",
             )}
           >
             <StatIcon className="w-5 h-5 text-white" />
@@ -341,17 +347,17 @@ export default function LinkAnalyticsCard({
                 <button
                   onClick={() => setIsStatOpen(!isStatOpen)}
                   className={clsx(
-                    "flex items-center gap-2 text-[1.3em] font-semibold text-shortblack px-4 py-2 rounded-xl transition-colors duration-300 border border-transparent",
+                    "flex items-center gap-2 text-[1.3em] font-semibold text-shortblack px-4 py-2 rounded-xl transition-colors duration-300 border",
                     isDark
-                      ? "bg-subcard hover:bg-gray-dashboard/50"
-                      : "bg-blues hover:bg-blue-100"
+                      ? "bg-subcard hover:bg-gray-dashboard/50 border-transparent"
+                      : "bg-blues border-gray-dashboard/30 hover:border-bluelight/30",
                   )}
                 >
                   {statOptions.find((o) => o.key === stat)?.label}
                   <ChevronDown
                     className={clsx(
                       "w-4 h-4 transition-transform duration-300",
-                      isStatOpen && "rotate-180"
+                      isStatOpen && "rotate-180",
                     )}
                   />
                 </button>
@@ -366,7 +372,7 @@ export default function LinkAnalyticsCard({
                         "absolute top-full right-0 mt-2 p-1.5 w-max rounded-xl shadow-xl border z-[40]",
                         isDark
                           ? "bg-card border-gray-800"
-                          : "bg-white border-gray-100"
+                          : "bg-white border-gray-100",
                       )}
                     >
                       {statOptions.map((opt) => {
@@ -381,12 +387,10 @@ export default function LinkAnalyticsCard({
                             className={clsx(
                               "flex items-center gap-2 w-full text-left text-[1.3em] px-4 py-2.5 rounded-lg transition-all duration-300",
                               stat === opt.key
-                                ? isDark
-                                  ? "bg-gradient-to-r from-blue-background-gradient to-purple-background-gradient text-tx-blue-dashboard font-semibold"
-                                  : "bg-bluelight/10 text-bluelight font-semibold"
+                                ? "bg-gradient-to-r from-blue-background-gradient to-purple-background-gradient text-tx-blue-dashboard font-semibold"
                                 : isDark
-                                ? "text-grays hover:text-tx-blue-dashboard hover:bg-subcard"
-                                : "text-shortblack hover:text-bluelight hover:bg-gray-50"
+                                  ? "text-grays hover:text-tx-blue-dashboard hover:bg-subcard"
+                                  : "text-shortblack hover:text-bluelight hover:bg-gray-50",
                             )}
                           >
                             <Icon className="w-4 h-4" />
@@ -405,17 +409,17 @@ export default function LinkAnalyticsCard({
                   <button
                     onClick={() => setIsRangeOpen(!isRangeOpen)}
                     className={clsx(
-                      "flex items-center gap-2 text-[1.3em] font-semibold text-shortblack px-4 py-2 rounded-xl transition-colors duration-300 border border-transparent",
+                      "flex items-center gap-2 text-[1.3em] font-semibold text-shortblack px-4 py-2 rounded-xl transition-colors duration-300 border",
                       isDark
-                        ? "bg-subcard hover:bg-gray-dashboard/50"
-                        : "bg-blues hover:bg-blue-100"
+                        ? "bg-subcard hover:bg-gray-dashboard/50 border-transparent"
+                        : "bg-blues border-gray-dashboard/30 hover:border-bluelight/30",
                     )}
                   >
                     {timeRanges.find((o) => o.key === range)?.label}
                     <ChevronDown
                       className={clsx(
                         "w-4 h-4 transition-transform duration-300",
-                        isRangeOpen && "rotate-180"
+                        isRangeOpen && "rotate-180",
                       )}
                     />
                   </button>
@@ -430,7 +434,7 @@ export default function LinkAnalyticsCard({
                           "absolute top-full right-0 mt-2 p-1.5 w-max rounded-xl shadow-xl border z-20",
                           isDark
                             ? "bg-card border-gray-800"
-                            : "bg-white border-gray-100"
+                            : "bg-white border-gray-100",
                         )}
                       >
                         {timeRanges.map((r) => (
@@ -443,12 +447,10 @@ export default function LinkAnalyticsCard({
                             className={clsx(
                               "block w-full text-left text-[1.3em] px-4 py-2.5 rounded-lg transition-all duration-300",
                               range === r.key
-                                ? isDark
-                                  ? "bg-gradient-to-r from-blue-background-gradient to-purple-background-gradient text-tx-blue-dashboard font-semibold"
-                                  : "bg-bluelight/10 text-bluelight font-semibold"
+                                ? "bg-gradient-to-r from-blue-background-gradient to-purple-background-gradient text-tx-blue-dashboard font-semibold"
                                 : isDark
-                                ? "text-grays hover:text-tx-blue-dashboard hover:bg-subcard"
-                                : "text-shortblack hover:text-bluelight hover:bg-gray-50"
+                                  ? "text-grays hover:text-tx-blue-dashboard hover:bg-subcard"
+                                  : "text-shortblack hover:text-bluelight hover:bg-gray-50",
                             )}
                           >
                             {r.label}

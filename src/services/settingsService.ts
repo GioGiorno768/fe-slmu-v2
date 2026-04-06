@@ -165,6 +165,35 @@ export async function setDefaultPaymentMethod(id: string): Promise<boolean> {
   return true;
 }
 
+export async function updatePaymentMethod(
+  id: string,
+  data: { accountName: string; accountNumber: string; provider: string; category: string }
+): Promise<SavedPaymentMethod> {
+  const response = await apiClient.put(`/payment-methods/${id}`, {
+    method_type:
+      data.category === "wallet"
+        ? "ewallet"
+        : data.category === "crypto"
+        ? "crypto"
+        : "bank_transfer",
+    account_name: data.accountName,
+    account_number: data.accountNumber,
+    bank_name: data.provider,
+  });
+
+  const m = response.data.data;
+  return {
+    id: String(m.id),
+    provider: m.bank_name,
+    accountName: m.account_name,
+    accountNumber: m.account_number,
+    isDefault: m.is_default || false,
+    category: data.category as "wallet" | "bank" | "crypto",
+    fee: m.fee || 0,
+    currency: m.template?.currency || undefined,
+  };
+}
+
 // ==========================================
 // 4. PREFERENCES SERVICE (Ini yang tadi kurang)
 // ==========================================

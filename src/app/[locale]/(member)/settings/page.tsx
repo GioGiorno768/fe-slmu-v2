@@ -121,7 +121,7 @@ export default function SettingsPage() {
   }
 
   return (
-    <div className="lg:text-[10px] text-[8px] font-figtree pb-10">
+    <div className="lg:text-[10px] text-[9px] font-figtree pb-10">
       <h1 className="text-[2.5em] font-bold text-shortblack mb-8">
         {t("settingsPage.accountSettings")}
       </h1>

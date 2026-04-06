@@ -42,7 +42,7 @@ export default function DashboardMockup() {
           {/* Dashboard Screenshot */}
           <div className="relative w-full">
             <Image
-              src="/landing/dashboard-no-ads.png"
+              src="/landing/dashboard-with-ads.png"
               alt="Shortlinkmu Dashboard Preview - Analytics, Earnings, and Links Management"
               // width={2980}
               // height={1920}

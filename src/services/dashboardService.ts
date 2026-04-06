@@ -75,21 +75,21 @@ const DEMO_MODE = false;
 
 // --- MILESTONE: Connect to /api/user/levels ---
 export const getMilestone = async (): Promise<MilestoneData> => {
-  // 🎨 DEMO: Return impressive dummy data
+  // 🎨 DEMO: Pro-rank user — ~12-18 months active, content creator
   if (DEMO_MODE) {
     return {
       icon: Star,
       currentLevel: "Pro",
-      nextLevel: "Elite",
-      currentEarnings: 127.5,
-      nextTarget: 200,
-      currentBonus: 25,
-      nextBonus: 35,
-      progress: 64,
-      iconName: "zap",
-      iconColor: "text-purple-400",
-      bgColor: "bg-purple-500/10",
-      borderColor: "border-purple-500/30",
+      nextLevel: "Master",
+      currentEarnings: 2800,
+      nextTarget: 5000,
+      currentBonus: 15,
+      nextBonus: 25,
+      progress: 45,
+      iconName: "gem",
+      iconColor: "text-orange-500",
+      bgColor: "bg-orange-50",
+      borderColor: "border-orange-200",
     };
   }
 
@@ -157,15 +157,15 @@ export const getMilestone = async (): Promise<MilestoneData> => {
 
 // --- REFERRAL: Connect to /api/dashboard/overview ---
 export const getReferralData = async (): Promise<ReferralCardData> => {
-  // 🎨 DEMO: Return impressive dummy data
+  // 🎨 DEMO: Pro user — decent referral network
   if (DEMO_MODE) {
     const baseUrl =
       typeof window !== "undefined"
         ? window.location.origin
         : "https://shortlinkmu.com";
     return {
-      referralLink: `${baseUrl}/register?ref=DEMO2024`,
-      totalUsers: 47,
+      referralLink: `${baseUrl}/register?ref=kevin24`,
+      totalUsers: 12,
     };
   }
 
@@ -196,12 +196,12 @@ export const getReferralData = async (): Promise<ReferralCardData> => {
 };
 
 export const getTrafficStats = async (): Promise<TopTrafficStats> => {
-  // 🎨 DEMO: Return impressive dummy data
+  // 🎨 DEMO: Pro user — solid monthly traffic
   if (DEMO_MODE) {
     return {
-      topMonth: { month: "January", views: 8432 },
-      topYear: { year: "2025", views: 45621 },
-      topLevel: { level: "pro", cpmBonusPercent: 25 },
+      topMonth: { month: "March", views: 12480 },
+      topYear: { year: "2026", views: 84230 },
+      topLevel: { level: "pro", cpmBonusPercent: 15 },
     };
   }
 
@@ -285,59 +285,59 @@ export const getTrafficStats = async (): Promise<TopTrafficStats> => {
 
 // --- TOP LINKS: Connect to /api/dashboard/overview (limit 10) ---
 export const getTopLinks = async (): Promise<TopPerformingLink[]> => {
-  // 🎨 DEMO: Return impressive dummy data
+  // 🎨 DEMO: Pro user — Indonesian content creator with niche audience
   if (DEMO_MODE) {
     const shortlinkBaseUrl = "https://slmu.my.id";
     return [
       {
         id: "1",
-        title: "Tutorial React Hooks 2025",
-        shortUrl: `${shortlinkBaseUrl}/react25`,
-        originalUrl: "https://medium.com/react-hooks-tutorial",
-        validViews: 4521,
-        totalEarnings: 18.45,
-        cpm: 4.08,
+        title: "Tutorial Laravel 11 CRUD Lengkap",
+        shortUrl: `${shortlinkBaseUrl}/lrv11`,
+        originalUrl: "https://youtube.com/watch?v=laravel-11-crud",
+        validViews: 14820,
+        totalEarnings: 68.17,
+        cpm: 4.6,
         adsLevel: "level2",
       },
       {
         id: "2",
-        title: "Cara Dapat Uang dari Internet",
-        shortUrl: `${shortlinkBaseUrl}/cuan123`,
-        originalUrl: "https://blog.com/passive-income",
-        validViews: 3287,
-        totalEarnings: 12.76,
-        cpm: 3.88,
-        adsLevel: "level2",
-      },
-      {
-        id: "3",
-        title: "Download Film Gratis HD",
-        shortUrl: `${shortlinkBaseUrl}/filmhd`,
-        originalUrl: "https://movies.example.com/download",
-        validViews: 2854,
-        totalEarnings: 9.42,
-        cpm: 3.3,
+        title: "Source Code Aplikasi Kasir Gratis",
+        shortUrl: `${shortlinkBaseUrl}/kasir`,
+        originalUrl: "https://github.com/example/pos-system",
+        validViews: 11250,
+        totalEarnings: 49.50,
+        cpm: 4.4,
         adsLevel: "level3",
       },
       {
+        id: "3",
+        title: "Cara Deploy Website ke VPS Murah",
+        shortUrl: `${shortlinkBaseUrl}/vps26`,
+        originalUrl: "https://blog.example.com/deploy-vps-guide",
+        validViews: 8730,
+        totalEarnings: 37.54,
+        cpm: 4.3,
+        adsLevel: "level2",
+      },
+      {
         id: "4",
-        title: "Game Android Terbaru 2025",
-        shortUrl: `${shortlinkBaseUrl}/game25`,
-        originalUrl: "https://play.google.com/store/apps",
-        validViews: 1923,
-        totalEarnings: 6.15,
-        cpm: 3.2,
-        adsLevel: "level1",
+        title: "Template CV ATS Friendly 2026",
+        shortUrl: `${shortlinkBaseUrl}/cvats`,
+        originalUrl: "https://drive.google.com/cv-template-ats",
+        validViews: 6920,
+        totalEarnings: 28.37,
+        cpm: 4.1,
+        adsLevel: "level2",
       },
       {
         id: "5",
-        title: "Preset Lightroom Aesthetic",
-        shortUrl: `${shortlinkBaseUrl}/preset`,
-        originalUrl: "https://drive.google.com/preset-lr",
-        validViews: 1456,
-        totalEarnings: 4.82,
-        cpm: 3.31,
-        adsLevel: "level2",
+        title: "Preset CapCut Cinematic Pack",
+        shortUrl: `${shortlinkBaseUrl}/ccpak`,
+        originalUrl: "https://drive.google.com/capcut-cinematic",
+        validViews: 5410,
+        totalEarnings: 21.10,
+        cpm: 3.9,
+        adsLevel: "level1",
       },
     ];
   }
@@ -396,7 +396,7 @@ export const getAnalytics = async (
   range: TimeRange,
   stat: StatType,
 ): Promise<AnalyticsData> => {
-  // 🎨 DEMO: Return impressive chart data
+  // 🎨 DEMO: Pro user — consistent daily traffic with weekend peaks
   if (DEMO_MODE) {
     const daysOfWeek = ["Sen", "Sel", "Rab", "Kam", "Jum", "Sab", "Min"];
 
@@ -405,7 +405,7 @@ export const getAnalytics = async (
         series: [
           {
             name: "Valid Clicks",
-            data: [1245, 1876, 1432, 2103, 2567, 3241, 2876],
+            data: [1120, 1340, 1080, 1510, 1780, 2430, 2150],
           },
         ],
         categories: daysOfWeek,
@@ -415,14 +415,14 @@ export const getAnalytics = async (
         series: [
           {
             name: "Earnings",
-            data: [4.82, 7.23, 5.54, 8.12, 9.91, 12.53, 11.1],
+            data: [4.93, 5.90, 4.75, 6.64, 7.83, 10.69, 9.46],
           },
         ],
         categories: daysOfWeek,
       };
     } else {
       return {
-        series: [{ name: "Referrals", data: [3, 5, 2, 7, 4, 8, 6] }],
+        series: [{ name: "Referrals", data: [1, 0, 2, 1, 0, 3, 2] }],
         categories: daysOfWeek,
       };
     }

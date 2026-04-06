@@ -15,12 +15,12 @@ const CACHE_TTL = 0; // No cache - always fetch fresh balance
  * Uses dedicated lightweight endpoint /api/user/stats
  */
 export async function getHeaderStats(): Promise<HeaderStats> {
-  // 🎨 DEMO: Return impressive dummy data
+  // 🎨 DEMO: Pro-rank user — solid balance, good payout history
   if (DEMO_MODE) {
     return {
-      balance: 127.5,
-      payout: 89.25,
-      cpm: 8.0,
+      balance: 285.6,
+      payout: 2515.0,
+      cpm: 4.4,
     };
   }
 

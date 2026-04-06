@@ -199,7 +199,7 @@
       },
       "step3": {
         "title": "Terima Bayaran",
-        "desc": "Tarik via PayPal atau Crypto",
+        "desc": "Tarik via e-wallet atau bank transfer",
         "withdraw": "Tarik"
       }
     },
@@ -1361,6 +1361,10 @@
       "deleteConfirm": "Hapus",
       "provider": "provider",
       "providers": "provider",
+      "edit": "Edit",
+      "cancel": "Batal",
+      "editMethodTitle": "Edit Metode Pembayaran",
+      "editMethodDesc": "Ubah informasi akun metode pembayaran Anda.",
       "generalPreferences": "Preferensi Umum",
       "displayLanguage": "Bahasa Tampilan",
       "displayCurrency": "Mata Uang Tampilan",

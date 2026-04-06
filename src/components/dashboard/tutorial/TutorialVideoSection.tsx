@@ -11,25 +11,25 @@ import { useTranslations } from "next-intl";
 // Dummy YouTube video IDs — ganti dengan ID asli nanti
 const VIDEOS = [
   {
-    id: "dQw4w9WgXcQ", // Dummy — ganti nanti
+    id: "naz0-szzYXk", // Dummy — ganti nanti
     titleKey: "video1Title",
     descKey: "video1Desc",
     featured: true,
   },
   {
-    id: "dQw4w9WgXcQ", // Dummy — ganti nanti
+    id: "naz0-szzYXk", // Dummy — ganti nanti
     titleKey: "video2Title",
     descKey: "video2Desc",
     featured: false,
   },
   {
-    id: "dQw4w9WgXcQ", // Dummy — ganti nanti
+    id: "naz0-szzYXk", // Dummy — ganti nanti
     titleKey: "video3Title",
     descKey: "video3Desc",
     featured: false,
   },
   {
-    id: "dQw4w9WgXcQ", // Dummy — ganti nanti
+    id: "naz0-szzYXk", // Dummy — ganti nanti
     titleKey: "video4Title",
     descKey: "video4Desc",
     featured: false,

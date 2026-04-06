@@ -199,7 +199,7 @@
       },
       "step3": {
         "title": "Get Paid",
-        "desc": "Withdraw via PayPal or Crypto",
+        "desc": "Withdraw via e-wallet or bank transfer",
         "withdraw": "Withdraw"
       }
     },
@@ -1361,6 +1361,10 @@
       "deleteConfirm": "Delete",
       "provider": "provider",
       "providers": "providers",
+      "edit": "Edit",
+      "cancel": "Cancel",
+      "editMethodTitle": "Edit Payment Method",
+      "editMethodDesc": "Update your payment method account information.",
       "generalPreferences": "General Preferences",
       "displayLanguage": "Display Language",
       "displayCurrency": "Display Currency",

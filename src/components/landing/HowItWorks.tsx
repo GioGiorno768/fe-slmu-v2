@@ -95,19 +95,21 @@ export default async function HowItWorks() {
         <div className="space-y-2.5">
           <div className="flex items-center justify-between p-2 bg-white/10 rounded-lg backdrop-blur-sm">
             <div className="flex items-center gap-2">
-              <div className="w-5 h-5 bg-bluelanding rounded-full flex items-center justify-center">
-                <span className="text-[8px] text-white font-bold">P</span>
+              <div className="w-5 h-5 bg-blue-500 rounded-full flex items-center justify-center">
+                <span className="text-[8px] text-white font-bold">D</span>
               </div>
-              <span className="text-[10px] text-white/80">PayPal</span>
+              <span className="text-[10px] text-white/80">DANA</span>
             </div>
             <span className="text-[9px] text-green-300">✓</span>
           </div>
           <div className="flex items-center justify-between p-2 bg-white/10 rounded-lg backdrop-blur-sm">
             <div className="flex items-center gap-2">
-              <div className="w-5 h-5 bg-orange-400 rounded-full flex items-center justify-center">
-                <span className="text-[8px] text-white font-bold">₿</span>
+              <div className="w-5 h-5 bg-indigo-500 rounded-full flex items-center justify-center">
+                <svg className="w-3 h-3 text-white" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M4 10V7c0-1.1.9-2 2-2h12c1.1 0 2 .9 2 2v3H4zm0 2v5c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-5H4zm5 2h6v2H9v-2z" />
+                </svg>
               </div>
-              <span className="text-[10px] text-white/80">Crypto</span>
+              <span className="text-[10px] text-white/80">Bank Transfer</span>
             </div>
             <span className="text-[9px] text-green-300">✓</span>
           </div>

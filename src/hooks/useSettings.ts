@@ -204,6 +204,23 @@ export function usePaymentLogic() {
     },
   });
 
+  // Mutation: Update payment method
+  const updateMutation = useMutation({
+    mutationFn: (data: { id: string; accountName: string; accountNumber: string; provider: string; category: string }) =>
+      settingsService.updatePaymentMethod(data.id, data),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: paymentKeys.all });
+      showAlert("Metode pembayaran berhasil diperbarui!", "success");
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+    },
+    onError: (error: any) => {
+      const msg = error.response?.data?.message || "Gagal memperbarui metode.";
+      showAlert(msg, "error");
+    },
+  });
+
   // Mutation: Set as default
   const setDefaultMutation = useMutation({
     mutationFn: (id: string) => settingsService.setDefaultPaymentMethod(id),
@@ -221,6 +238,10 @@ export function usePaymentLogic() {
     },
     onSuccess: () => {
       showAlert("Metode utama diperbarui.", "success");
+      // Refresh page after 1 second to reflect default change everywhere
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
     },
     onError: (_, __, context) => {
       // Revert on error
@@ -255,6 +276,15 @@ export function usePaymentLogic() {
     }
   };
 
+  const updateMethod = async (id: string, data: { accountName: string; accountNumber: string; provider: string; category: string }) => {
+    try {
+      await updateMutation.mutateAsync({ id, ...data });
+      return true;
+    } catch {
+      return false;
+    }
+  };
+
   const setAsDefault = async (id: string) => {
     try {
       await setDefaultMutation.mutateAsync(id);
@@ -267,6 +297,7 @@ export function usePaymentLogic() {
   const isProcessing =
     addMutation.isPending ||
     removeMutation.isPending ||
+    updateMutation.isPending ||
     setDefaultMutation.isPending;
 
   return {
@@ -277,6 +308,7 @@ export function usePaymentLogic() {
     error: error ? "Gagal memuat metode pembayaran." : null,
     addMethod,
     removeMethod,
+    updateMethod,
     setAsDefault,
     isProcessing,
   };
