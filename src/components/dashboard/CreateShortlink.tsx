@@ -5,8 +5,6 @@ import { useState, useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 import {
   Link as LinkIcon,
-  Plus,
-  Minus,
   Loader2,
   Lock,
   Type,
@@ -21,7 +19,6 @@ import {
   Send,
   Megaphone,
   Sparkles,
-  Bolt,
 } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import type {
@@ -82,7 +79,6 @@ export default function CreateShortlink({
   });
 
   // State UI
-  const [isAdvancedOpen, setIsAdvancedOpen] = useState(false);
   const [isAdsLevelOpen, setIsAdsLevelOpen] = useState(false);
   const [isShortCopied, setIsShortCopied] = useState(false);
   const [isDestCopied, setIsDestCopied] = useState(false);
@@ -242,19 +238,7 @@ export default function CreateShortlink({
               <p className="text-[1.2em] text-grays mt-0.5">{t("descCreateShortlink")}</p>
             </div>
           </div>
-          <button
-            onClick={() => setIsAdvancedOpen(!isAdvancedOpen)}
-            className="flex items-center gap-2 text-[1.3em] font-semibold text-bluelight bg-subcard px-4 py-2 rounded-xl hover:bg-blues transition-all border border-gray-dashboard/30"
-          >
-            {/* {isAdvancedOpen ? (
-              <Minus className="w-4 h-4" />
-            ) : (
-            )} */}
-            <Bolt className="w-4 h-4" />
-            <span className="hidden sm:inline-block">
-              {isAdvancedOpen ? t("basicLink") : t("advancedLink")}
-            </span>
-          </button>
+
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -292,14 +276,7 @@ export default function CreateShortlink({
             </div>
           </div>
 
-          <AnimatePresence>
-            {isAdvancedOpen && (
-              <motion.div
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: "auto", opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.3 }}
-              >
+          <>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 transition-all duration-300">
                   <div className="relative">
                     <Lock className="w-4 h-4 text-grays absolute left-4 top-1/2 -translate-y-1/2" />
@@ -411,9 +388,7 @@ export default function CreateShortlink({
                   </div>
                   {/* batas ads */}
                 </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+          </>
 
           <button
             type="submit"

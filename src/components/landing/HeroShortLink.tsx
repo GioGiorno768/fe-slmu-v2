@@ -20,7 +20,7 @@ import {
 } from "lucide-react";
 import { useAlert } from "@/hooks/useAlert";
 import * as linkService from "@/services/linkService";
-import { isAuthenticated } from "@/services/authService";
+
 import { Link } from "@/i18n/routing";
 import Toast from "@/components/common/Toast";
 import { AnimatePresence, motion } from "motion/react";
@@ -94,24 +94,14 @@ export default function HeroShortLink() {
     setShowErrorModal(false);
 
     try {
-      let shortUrl: string;
-
-      if (isAuthenticated()) {
-        // Authenticated user → use createLink (no guest rate limit)
-        const data = await linkService.createLink({
-          url: urlInput,
-          alias: aliasInput || undefined,
-          adsLevel: "low", // Default ad level for landing page
-        });
-        shortUrl = data.shortUrl;
-      } else {
-        // Guest user → use createGuestLink
-        const data = await linkService.createGuestLink(
-          urlInput,
-          aliasInput || undefined,
-        );
-        shortUrl = data.shortUrl;
-      }
+      // Always create as guest link from landing page
+      // Authenticated users: apiClient auto-attaches bearer token,
+      // backend will skip rate limit but keep free pass behavior
+      const data = await linkService.createGuestLink(
+        urlInput,
+        aliasInput || undefined,
+      );
+      const shortUrl = data.shortUrl;
 
       // Add to history
       setCreatedLinks((prev) => [...prev, shortUrl]);

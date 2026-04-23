@@ -20,20 +20,20 @@ export default function DashboardFooter() {
   // Ikon sosial media
   const socialIcons = [
     {
-      label: "WhatsApp",
-      href: "https://wa.me/628123456789", // <-- Ganti nomor WA lu
+      label: "Instagram",
+      href: "https://www.instagram.com/shortlinkmu/", // <-- Ganti nomor WA lu
       // Pake class icon dari globals.css
-      icon: <span className="meteor-icons--whatsapp w-5 h-5 bg-grays" />,
+      icon: <span className="mynaui--instagram w-6 h-6 bg-grays" />,
     },
     {
-      label: "Telegram",
-      href: "https://t.me/username_lu", // <-- Ganti username TG lu
-      icon: <Send className="w-5 h-5 text-grays" />,
+      label: "TikTok",
+      href: "https://www.tiktok.com/@shortlinkmu", // <-- Ganti username TG lu
+      icon: <span className="ic--sharp-tiktok w-5 h-5 bg-grays" />,
     },
     {
       label: "YouTube",
-      href: "https://youtube.com/channel_lu", // <-- Ganti link YT lu
-      icon: <Youtube className="w-5 h-5 text-grays" />,
+      href: "https://youtube.com/@shortlinkmu", // <-- Ganti link YT lu
+      icon: <Youtube className="w-6 h-6 text-grays" />,
     },
   ];
 
@@ -61,7 +61,7 @@ export default function DashboardFooter() {
         {/* Kanan: Ikon Sosial Media */}
         <div className="flex items-center gap-3">
           {socialIcons.map((social) => (
-            <a
+            <Link
               key={social.label}
               href={social.href}
               title={social.label}
@@ -73,7 +73,7 @@ export default function DashboardFooter() {
                              hover:scale-110 transition-all"
             >
               {social.icon}
-            </a>
+            </Link>
           ))}
         </div>
       </div>
