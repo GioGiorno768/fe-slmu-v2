@@ -240,28 +240,37 @@ LinkItemProps) {
 
           {/* Details Row */}
           {isGuest ? (
-            /* Guest Link: Simplified view - only show "Guest" label */
-            <div className="flex items-center gap-3 text-[1.2em]">
-              <div
-                className={clsx(
-                  "w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm border shadow-sm",
-                  isDark
-                    ? "bg-gray-700 text-gray-400 border-gray-600"
-                    : "bg-gray-200 text-gray-500 border-white",
-                )}
-              >
-                G
-              </div>
-              <div className="min-w-0">
-                <p
+            /* Guest Link: Simplified view - show "Guest" label + views */
+            <div className="flex items-center justify-between text-[1.2em]">
+              <div className="flex items-center gap-3">
+                <div
                   className={clsx(
-                    "font-medium",
-                    isDark ? "text-gray-400" : "text-gray-500",
+                    "w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm border shadow-sm",
+                    isDark
+                      ? "bg-gray-700 text-gray-400 border-gray-600"
+                      : "bg-gray-200 text-gray-500 border-white",
                   )}
                 >
-                  Guest Link
-                </p>
-                <p className="text-grays text-[0.9em]">Created without login</p>
+                  G
+                </div>
+                <div className="min-w-0">
+                  <p
+                    className={clsx(
+                      "font-medium",
+                      isDark ? "text-gray-400" : "text-gray-500",
+                    )}
+                  >
+                    Guest Link
+                  </p>
+                  <p className="text-grays text-[0.9em]">Created without login</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 text-grays">
+                <BarChart3 className="w-3.5 h-3.5" />
+                <span>Views:</span>
+                <b className="text-shortblack">
+                  {link.views.toLocaleString()}
+                </b>
               </div>
             </div>
           ) : (

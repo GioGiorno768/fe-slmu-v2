@@ -40,7 +40,7 @@ export const getMemberMenu = (t: any): NavItem[] => [
   { icon: Crown, label: "Rank", href: "/levels" },
   { icon: UserPlus2, label: t("referral"), href: "/referral" },
   { icon: BanknoteArrowDown, label: t("withdrawal"), href: "/withdrawal" },
-  { icon: BookOpen, label: t("tutorial"), href: "/tutorial" },
+  // { icon: BookOpen, label: t("tutorial"), href: "/tutorial" },
   // { icon: History, label: t("history"), href: "/history" },
 ];
 

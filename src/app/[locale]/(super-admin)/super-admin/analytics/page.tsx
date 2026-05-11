@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { motion } from "motion/react";
 import {
   Users,
   UserCheck,
@@ -11,10 +12,11 @@ import {
   Clock,
   ChevronDown,
   Calendar,
+  TrendingUp,
+  ArrowUpRight,
+  Loader2,
+  type LucideIcon,
 } from "lucide-react";
-import SharedStatsGrid, {
-  type StatCardData,
-} from "@/components/dashboard/SharedStatsGrid";
 import {
   usePlatformAnalytics,
   type TimeFilter,
@@ -32,6 +34,80 @@ const TIME_FILTER_OPTIONS: { key: TimeFilter; label: string }[] = [
   { key: "year", label: "This Year" },
 ];
 
+// ─── Hero Card Color Presets ────────────────────────────────
+interface HeroPreset {
+  gradient: string;
+  iconBg: string;
+  accentText: string;
+  badge: string;
+  glowFrom: string;
+}
+
+const HERO_PRESETS: Record<string, HeroPreset> = {
+  green: {
+    gradient: "from-emerald-500 to-teal-600",
+    iconBg: "bg-white/20",
+    accentText: "text-emerald-100",
+    badge: "bg-emerald-400/25 text-emerald-50",
+    glowFrom: "bg-emerald-400/15",
+  },
+  blue: {
+    gradient: "from-blue-500 to-indigo-600",
+    iconBg: "bg-white/20",
+    accentText: "text-blue-100",
+    badge: "bg-blue-400/25 text-blue-50",
+    glowFrom: "bg-blue-400/15",
+  },
+  amber: {
+    gradient: "from-amber-500 to-orange-600",
+    iconBg: "bg-white/20",
+    accentText: "text-amber-100",
+    badge: "bg-amber-400/25 text-amber-50",
+    glowFrom: "bg-amber-400/15",
+  },
+};
+
+// ─── Compact Card Color Presets ─────────────────────────────
+interface CompactPreset {
+  iconGradient: string;
+  shadowColor: string;
+  accentText: string;
+  borderColor: string;
+}
+
+const COMPACT_PRESETS: Record<string, CompactPreset> = {
+  purple: {
+    iconGradient: "from-purple-500 to-violet-600",
+    shadowColor: "shadow-purple-200 dark:shadow-purple-900/30",
+    accentText: "text-purple-600 dark:text-purple-400",
+    borderColor: "border-purple-100 dark:border-purple-500/20",
+  },
+  orange: {
+    iconGradient: "from-orange-500 to-amber-600",
+    shadowColor: "shadow-orange-200 dark:shadow-orange-900/30",
+    accentText: "text-orange-600 dark:text-orange-400",
+    borderColor: "border-orange-100 dark:border-orange-500/20",
+  },
+  blue: {
+    iconGradient: "from-blue-500 to-indigo-600",
+    shadowColor: "shadow-blue-200 dark:shadow-blue-900/30",
+    accentText: "text-blue-600 dark:text-blue-400",
+    borderColor: "border-blue-100 dark:border-blue-500/20",
+  },
+  green: {
+    iconGradient: "from-emerald-500 to-teal-600",
+    shadowColor: "shadow-emerald-200 dark:shadow-emerald-900/30",
+    accentText: "text-emerald-600 dark:text-emerald-400",
+    borderColor: "border-emerald-100 dark:border-emerald-500/20",
+  },
+  rose: {
+    iconGradient: "from-rose-500 to-pink-600",
+    shadowColor: "shadow-rose-200 dark:shadow-rose-900/30",
+    accentText: "text-rose-600 dark:text-rose-400",
+    borderColor: "border-rose-100 dark:border-rose-500/20",
+  },
+};
+
 export default function PlatformAnalyticsPage() {
   const [timeFilter, setTimeFilter] = useState<TimeFilter>("week");
   const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -44,9 +120,6 @@ export default function PlatformAnalyticsPage() {
   }, []);
 
   const isDark = mounted && resolvedTheme === "dark";
-
-  // Format number dengan comma
-  const formatNumber = (num: number) => num.toLocaleString("en-US");
 
   // Format compact number (K, M, B)
   const formatCompact = (num: number): string => {
@@ -67,7 +140,7 @@ export default function PlatformAnalyticsPage() {
     if (compact && val >= 1_000) {
       return "$" + formatCompact(val);
     }
-    return "$" + val.toLocaleString("en-US", { minimumFractionDigits: 5 });
+    return "$" + val.toLocaleString("en-US", { minimumFractionDigits: 5, maximumFractionDigits: 5 });
   };
 
   // Get current filter label
@@ -91,7 +164,7 @@ export default function PlatformAnalyticsPage() {
         active: "All active users",
         links: "All created links",
         clicks: "Platform-wide",
-        revenue: "All time estimated",
+        revenue: "All time earnings",
         paid: "Total disbursement",
         pending: "Pending withdrawals",
         usersPaid: "All users paid",
@@ -101,7 +174,7 @@ export default function PlatformAnalyticsPage() {
         active: "Active this week",
         links: "Created this week",
         clicks: "This week",
-        revenue: "Estimated this week",
+        revenue: "Earned this week",
         paid: "Paid this week",
         pending: "Pending this week",
         usersPaid: "Users paid this week",
@@ -111,7 +184,7 @@ export default function PlatformAnalyticsPage() {
         active: "Active this month",
         links: "Created this month",
         clicks: "This month",
-        revenue: "Estimated this month",
+        revenue: "Earned this month",
         paid: "Paid this month",
         pending: "Pending this month",
         usersPaid: "Users paid this month",
@@ -121,7 +194,7 @@ export default function PlatformAnalyticsPage() {
         active: "Active this year",
         links: "Created this year",
         clicks: "This year",
-        revenue: "Estimated this year",
+        revenue: "Earned this year",
         paid: "Paid this year",
         pending: "Pending this year",
         usersPaid: "Users paid this year",
@@ -130,16 +203,22 @@ export default function PlatformAnalyticsPage() {
     return periodMap[timeFilter][type];
   };
 
-  // Stats cards - Revenue + Platform metrics
-  const statsCards: StatCardData[] = [
-    // Revenue Stats
+  // ─── Hero Cards Data (Financial) ──────────────────────────
+  const heroCards: {
+    id: string;
+    title: string;
+    value: string;
+    subLabel: string;
+    icon: LucideIcon;
+    preset: HeroPreset;
+  }[] = [
     {
-      id: "est-revenue",
-      title: "Est. Revenue",
-      value: stats ? formatCurrency(stats.estRevenue, true) : "$0",
+      id: "total-earnings",
+      title: "Total Earnings",
+      value: stats ? formatCurrency(stats.totalEarnings, true) : "$0",
       subLabel: getPeriodText("revenue"),
       icon: DollarSign,
-      color: "green",
+      preset: HERO_PRESETS.green,
     },
     {
       id: "total-paid",
@@ -147,7 +226,7 @@ export default function PlatformAnalyticsPage() {
       value: stats ? formatCurrency(stats.totalPaid, true) : "$0",
       subLabel: getPeriodText("paid"),
       icon: CreditCard,
-      color: "blue",
+      preset: HERO_PRESETS.blue,
     },
     {
       id: "total-pending",
@@ -155,32 +234,42 @@ export default function PlatformAnalyticsPage() {
       value: stats ? formatCurrency(stats.totalPending, true) : "$0",
       subLabel: getPeriodText("pending"),
       icon: Clock,
-      color: "amber",
+      preset: HERO_PRESETS.amber,
     },
+  ];
+
+  // ─── Compact Cards Data (Platform) ────────────────────────
+  const compactCards: {
+    id: string;
+    title: string;
+    value: string;
+    subLabel: string;
+    icon: LucideIcon;
+    preset: CompactPreset;
+  }[] = [
     {
       id: "total-links",
       title: "Total Links",
       value: stats ? formatCompact(stats.totalLinks) : "0",
       subLabel: getPeriodText("links"),
       icon: Link2,
-      color: "purple",
+      preset: COMPACT_PRESETS.purple,
     },
     {
       id: "total-transactions",
-      title: "Success Withdrawals",
+      title: "Withdrawals",
       value: stats ? formatCompact(stats.totalTransactions) : "0",
       subLabel: getPeriodText("paid"),
       icon: CreditCard,
-      color: "orange",
+      preset: COMPACT_PRESETS.orange,
     },
-    // Platform Stats
     {
       id: "total-users",
       title: "Total Users",
       value: stats ? formatCompact(stats.totalUsers) : "0",
       subLabel: getPeriodText("users"),
       icon: Users,
-      color: "blue",
+      preset: COMPACT_PRESETS.blue,
     },
     {
       id: "active-users",
@@ -188,15 +277,15 @@ export default function PlatformAnalyticsPage() {
       value: stats ? formatCompact(stats.activeUsers) : "0",
       subLabel: getPeriodText("active"),
       icon: UserCheck,
-      color: "green",
+      preset: COMPACT_PRESETS.green,
     },
     {
-      id: "total-links-platform",
-      title: "Total Clicks/Views",
+      id: "total-clicks",
+      title: "Total Clicks",
       value: stats ? formatCompact(stats.totalClicks) : "0",
       subLabel: getPeriodText("clicks"),
       icon: MousePointerClick,
-      color: "orange",
+      preset: COMPACT_PRESETS.rose,
     },
   ];
 
@@ -288,10 +377,151 @@ export default function PlatformAnalyticsPage() {
         </div>
       </div>
 
-      {/* Overview Stats */}
-      <div>
-        <SharedStatsGrid cards={statsCards} isLoading={isLoading} columns={4} />
-      </div>
+      {/* ─── HERO ROW: Financial Stats ─────────────────────── */}
+      {isLoading ? (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          {[0, 1, 2].map((i) => (
+            <div
+              key={i}
+              className="h-[140px] bg-card rounded-3xl border border-gray-dashboard/30 flex items-center justify-center"
+            >
+              <Loader2 className="w-8 h-8 text-bluelight/20 animate-spin" />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          {heroCards.map((card, index) => {
+            const Icon = card.icon;
+            const p = card.preset;
+            return (
+              <motion.div
+                key={card.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1, duration: 0.4 }}
+                className={clsx(
+                  "relative overflow-hidden rounded-3xl bg-gradient-to-br p-6 text-white shadow-lg",
+                  "hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300",
+                  p.gradient,
+                )}
+              >
+                {/* Decorative glow */}
+                <div
+                  className={clsx(
+                    "absolute -top-10 -right-10 h-32 w-32 rounded-full blur-2xl",
+                    p.glowFrom,
+                  )}
+                />
+                <div
+                  className={clsx(
+                    "absolute -bottom-8 -left-8 h-24 w-24 rounded-full blur-2xl",
+                    p.glowFrom,
+                  )}
+                />
+
+                <div className="relative">
+                  {/* Top row: Icon + Badge */}
+                  <div className="flex items-center justify-between mb-4">
+                    <div
+                      className={clsx(
+                        "flex h-12 w-12 items-center justify-center rounded-2xl",
+                        p.iconBg,
+                      )}
+                    >
+                      <Icon className="h-6 w-6 text-white" />
+                    </div>
+                    <span
+                      className={clsx(
+                        "inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[1.1em] font-semibold",
+                        p.badge,
+                      )}
+                    >
+                      <ArrowUpRight className="h-3 w-3" />
+                      {currentFilterLabel}
+                    </span>
+                  </div>
+
+                  {/* Value */}
+                  <h3 className="text-[3.2em] font-bold font-manrope leading-none tracking-tight">
+                    {card.value}
+                  </h3>
+
+                  {/* Title + SubLabel */}
+                  <div className="mt-2 flex items-center justify-between">
+                    <p className="text-[1.4em] font-semibold text-white/90">
+                      {card.title}
+                    </p>
+                    <p className={clsx("text-[1.1em]", p.accentText)}>
+                      {card.subLabel}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+      )}
+
+      {/* ─── COMPACT ROW: Platform Stats ───────────────────── */}
+      {isLoading ? (
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+          {[0, 1, 2, 3, 4].map((i) => (
+            <div
+              key={i}
+              className="h-[90px] bg-card rounded-2xl border border-gray-dashboard/30 flex items-center justify-center"
+            >
+              <Loader2 className="w-6 h-6 text-bluelight/20 animate-spin" />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+          {compactCards.map((card, index) => {
+            const Icon = card.icon;
+            const p = card.preset;
+            return (
+              <motion.div
+                key={card.id}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 + index * 0.06, duration: 0.3 }}
+                className={clsx(
+                  "group relative bg-card rounded-2xl p-4 border overflow-hidden",
+                  "hover:shadow-md hover:-translate-y-0.5 transition-all duration-200",
+                  p.borderColor,
+                )}
+              >
+                {/* Top: Icon + Title */}
+                <div className="flex items-center gap-2.5 mb-2.5">
+                  <div
+                    className={clsx(
+                      "flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br shadow-sm shrink-0",
+                      p.iconGradient,
+                      p.shadowColor,
+                    )}
+                  >
+                    <Icon className="h-4 w-4 text-white" />
+                  </div>
+                  <p className="text-[1.2em] text-grays leading-tight">
+                    {card.title}
+                  </p>
+                </div>
+
+                {/* Value */}
+                <h4 className="text-[2.2em] font-bold text-shortblack font-manrope leading-none">
+                  {card.value}
+                </h4>
+
+                {/* SubLabel */}
+                <p className={clsx("text-[1em] mt-1.5", p.accentText)}>
+                  {card.subLabel}
+                </p>
+              </motion.div>
+            );
+          })}
+        </div>
+      )}
 
       {/* Detail Cards Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

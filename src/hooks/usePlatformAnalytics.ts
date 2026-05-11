@@ -14,7 +14,7 @@ export interface PlatformAnalyticsStats {
   totalClicks: number;
   totalClicksGrowth: number;
   // Revenue stats
-  estRevenue: number;
+  totalEarnings: number;
   totalPaid: number;
   totalPending: number;
   totalTransactions: number;
@@ -46,7 +46,7 @@ export function usePlatformAnalytics(timeFilter: TimeFilter = "all") {
           totalClicks: data.total_clicks || 0,
           totalClicksGrowth: data.total_clicks_growth || 0,
           // Revenue stats
-          estRevenue: data.est_revenue || 0,
+          totalEarnings: data.total_earnings || 0,
           totalPaid: data.total_paid || 0,
           totalPending: data.total_pending || 0,
           totalTransactions: data.total_transactions || 0,

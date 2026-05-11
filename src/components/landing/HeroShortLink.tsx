@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import {
   Link as LinkIcon,
@@ -39,6 +39,7 @@ export default function HeroShortLink() {
   const [showErrorModal, setShowErrorModal] = useState(false);
   const [showAliasField, setShowAliasField] = useState(false);
   const [showForm, setShowForm] = useState(true);
+  const [mounted, setMounted] = useState(false);
   const [toast, setToast] = useState<{
     show: boolean;
     message: string;
@@ -48,6 +49,10 @@ export default function HeroShortLink() {
     message: "",
     type: "success",
   });
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   const [validationErrors, setValidationErrors] = useState<{
     alias?: string;
   }>({});
@@ -463,12 +468,17 @@ export default function HeroShortLink() {
           document.body,
         )}
 
-      <Toast
-        message={toast.message}
-        type={toast.type}
-        isVisible={toast.show}
-        onClose={() => setToast((prev) => ({ ...prev, show: false }))}
-      />
+      {/* Toast via Portal to escape Hero section's overflow-hidden stacking context */}
+      {mounted &&
+        createPortal(
+          <Toast
+            message={toast.message}
+            type={toast.type}
+            isVisible={toast.show}
+            onClose={() => setToast((prev) => ({ ...prev, show: false }))}
+          />,
+          document.body,
+        )}
     </div>
   );
 }
