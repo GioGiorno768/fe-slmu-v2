@@ -140,7 +140,13 @@ export default function PlatformAnalyticsPage() {
     if (compact && val >= 1_000) {
       return "$" + formatCompact(val);
     }
-    return "$" + val.toLocaleString("en-US", { minimumFractionDigits: 5, maximumFractionDigits: 5 });
+    return (
+      "$" +
+      val.toLocaleString("en-US", {
+        minimumFractionDigits: 5,
+        maximumFractionDigits: 5,
+      })
+    );
   };
 
   // Get current filter label

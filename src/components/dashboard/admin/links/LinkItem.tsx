@@ -269,7 +269,7 @@ LinkItemProps) {
                 <BarChart3 className="w-3.5 h-3.5" />
                 <span>Views:</span>
                 <b className="text-shortblack">
-                  {link.views.toLocaleString()}
+                  {link.views / 2}
                 </b>
               </div>
             </div>
